@@ -3121,7 +3121,7 @@ void QlementineStyle::drawComplexControl(
             fm.elidedText(groupBoxOpt->text, Qt::ElideRight, textRect.width(), Qt::TextSingleLine);
           const auto mouse = getMouseState(groupBoxOpt->state);
           const auto& textColor = groupBoxTitleColor(mouse, w);
-          constexpr auto textFlags = Qt::AlignVCenter | Qt::AlignBaseline | Qt::TextSingleLine | Qt::AlignLeft;
+          constexpr auto textFlags = Qt::AlignVCenter | Qt::AlignBaseline | Qt::TextSingleLine | Qt::AlignLeft | Qt::TextHideMnemonic;
           p->setFont(font);
           p->setPen(textColor);
           p->setRenderHint(QPainter::Antialiasing, true);
