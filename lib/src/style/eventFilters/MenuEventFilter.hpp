@@ -6,6 +6,7 @@
 #include <oclero/qlementine/style/QlementineStyle.hpp>
 #include <oclero/qlementine/utils/MenuUtils.hpp>
 
+#include <QCoreApplication>
 #include <QEvent>
 #include <QObject>
 #include <QMenu>
