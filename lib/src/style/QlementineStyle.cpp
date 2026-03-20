@@ -3992,7 +3992,7 @@ QSize QlementineStyle::sizeFromContents(
       //return opt->rect.size();
       break;
     case CT_LineEdit:
-      if (const auto* optFrame = qstyleoption_cast<const QStyleOptionFrame*>(opt)) {
+      if (qstyleoption_cast<const QStyleOptionFrame*>(opt)) {
         // Use contentSize (font-metrics-based) rather than optFrame->rect (current widget
         // geometry) so that sizeHint/minimumSizeHint report a content-driven width instead
         // of echoing back the widget's existing size.
