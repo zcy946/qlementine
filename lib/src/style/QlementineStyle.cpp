@@ -377,6 +377,11 @@ QIcon QlementineStyle::makeThemedIconFromName(const QString& name, const QSize& 
   }
 }
 
+QIcon QlementineStyle::makeThemedIconFromData(const QByteArray& svgData, const QSize& size, ColorRole role) const {
+  const auto iconTheme = _impl->iconThemeFromTheme(role);
+  return makeIconFromSvgData(svgData, iconTheme, size);
+}
+
 void QlementineStyle::setIconPathGetter(const std::function<QString(QString)>& func) {
   _impl->iconPathFunc = func;
 }
