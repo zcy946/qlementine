@@ -53,12 +53,14 @@ public:
   Theme const& theme() const;
   void setTheme(Theme const& theme);
   void setThemeJsonPath(QString const& jsonPath);
-  Q_SIGNAL void themeChanged();
-
   bool animationsEnabled() const;
   void setAnimationsEnabled(bool enabled);
-  Q_SIGNAL void animationsEnabledChanged();
 
+Q_SIGNALS:
+  void themeChanged();
+  void animationsEnabledChanged();
+
+public:
   virtual void triggerCompleteRepaint();
 
   void setAutoIconColor(AutoIconColor autoIconColor);
