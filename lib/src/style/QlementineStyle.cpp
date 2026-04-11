@@ -4862,10 +4862,14 @@ void QlementineStyle::polish(QWidget* w) {
   if (auto* comboBox = qobject_cast<QComboBox*>(w)) {
     comboBox->setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy::AdjustToContents);
 
-    // Will define a delegate to stylize the QComboBox items,
-    comboBox->setItemDelegate(new ComboBoxDelegate(comboBox, *this));
-    // Trigger the redefine when the QComboBox's view changes.
-    new ComboboxFilter(comboBox);
+    // Only replace the delegate if the combobox doesn't already have a custom one.
+    // This preserves delegates set by third-party widgets.
+    if (isDefaultItemDelegate(comboBox->itemDelegate())) {
+      // Will define a delegate to stylize the QComboBox items,
+      comboBox->setItemDelegate(new ComboBoxDelegate(comboBox, *this));
+      // Trigger the redefine when the QComboBox's view changes.
+      new ComboboxFilter(comboBox);
+    }
   } else if (auto* tabBar = qobject_cast<QTabBar*>(w)) {
     tabBar->installEventFilter(new TabBarEventFilter(tabBar));
   } else if (auto* label = qobject_cast<QLabel*>(w)) {
