@@ -19,11 +19,11 @@
 namespace oclero::qlementine {
 
 /// Returns true if the delegate is a default Qt delegate (not a custom subclass).
-inline bool isDefaultItemDelegate(QAbstractItemDelegate* delegate) {
-  if (!delegate) return true;
+inline bool isDefaultItemDelegate(const QAbstractItemDelegate* delegate) {
+  if (!delegate)
+    return true;
   const auto* meta = delegate->metaObject();
-  return meta == &QStyledItemDelegate::staticMetaObject
-      || meta == &QItemDelegate::staticMetaObject;
+  return meta == &QStyledItemDelegate::staticMetaObject || meta == &QItemDelegate::staticMetaObject;
 }
 
 // Event filter for the item view in the QComboBox's popup.
