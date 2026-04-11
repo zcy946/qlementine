@@ -2379,23 +2379,9 @@ QRect QlementineStyle::subElementRect(SubElement se, const QStyleOption* opt, co
         const auto hasText = !optButton->text.isEmpty();
         const auto hasMenu = optButton->features.testFlag(QStyleOptionButton::HasMenu);
         const auto padding = pixelMetric(PM_ButtonMargin);
-        auto [paddingLeft, paddingRight] = getHPaddings(hasIcon, hasText, hasMenu, padding);
-        const auto totalPadding = paddingLeft + paddingRight;
-        if (totalPadding >= opt->rect.width()) {
+        const auto [paddingLeft, paddingRight] = getHPaddings(hasIcon, hasText, hasMenu, padding);
+        if (paddingLeft + paddingRight >= opt->rect.width()) {
           return opt->rect;
-        }
-        // When the button is squeezed below its ideal size, reduce padding
-        // proportionally by the deficit so content space is preserved first.
-        // (Ultimately, this is user error, but showing text is better than showing nothing)
-        if (hasText && totalPadding > 0) {
-          const auto textW = qlementine::textWidth(optButton->fontMetrics, optButton->text);
-          const auto idealWidth = textW + totalPadding;
-          if (opt->rect.width() < idealWidth) {
-            const auto deficit = idealWidth - opt->rect.width();
-            const auto reduction = std::min(deficit, totalPadding);
-            paddingLeft -= paddingLeft * reduction / totalPadding;
-            paddingRight -= paddingRight * reduction / totalPadding;
-          }
         }
         return opt->rect.marginsRemoved({ paddingLeft, 0, paddingRight, 0 });
       }
