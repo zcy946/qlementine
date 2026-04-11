@@ -11,7 +11,7 @@
 namespace oclero::qlementine {
 namespace {
 // Helper function to generate icon from SVG renderer with optional colorization.
-static QIcon makeIconFromRenderer(QSvgRenderer& svgRenderer, const QSize& size, const IconTheme* iconTheme = nullptr) {
+QIcon makeIconFromRenderer(QSvgRenderer& svgRenderer, const QSize& size, const IconTheme* iconTheme = nullptr) {
   if (size.isEmpty())
     return {};
 
