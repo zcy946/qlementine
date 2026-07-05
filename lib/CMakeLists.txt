@@ -32,6 +32,8 @@ set(SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/StateUtils.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/StyleUtils.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/WidgetUtils.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/WindowsTitleBarUtils.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/utils/WindowsTitleBarUtils.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/AboutDialog.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/AbstractItemListWidget.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/widgets/Action.cpp
@@ -134,6 +136,13 @@ target_link_libraries(${PROJECT_NAME}
     Qt5::Widgets
     Qt5::Svg
 )
+
+if(WIN32)
+  target_link_libraries(${PROJECT_NAME}
+    PRIVATE
+      dwmapi
+  )
+endif()
 
 set_target_properties(${PROJECT_NAME}
   PROPERTIES

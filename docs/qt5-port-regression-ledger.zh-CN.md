@@ -62,6 +62,7 @@
 | Sandbox target | `qt_add_executable()` 改为 `add_executable()`，并增加 MSVC `/utf-8`。 | 资源或 moc 行为可能变化；非 ASCII 文本应保持正确。 | 构建并运行 sandbox，检查文本密集页面和资源。 | 已观察: 用户报告 sandbox 视觉效果基本一致。 |
 | Showcase target | `qt_add_executable()` 改为 `add_executable()`。 | 资源或 moc 行为可能变化。 | 构建并运行 showcase，检查图标、资源、主题切换和主要控件。 | 已观察: 用户报告 showcase 视觉效果基本一致。 |
 | Showcase icons 依赖 | `FetchContent_MakeAvailable(qlementine-icons)` 改为从 fetched sources/resources 手动构造静态 target。 | 图标资源、include path 或 target property 可能和上游 qlementine-icons 行为不同。 | 检查所有 showcase 图标分类、icon theme 初始化、themed icon colorization。 | 已观察: 用户报告 showcase 视觉效果基本一致。 |
+| Windows 原生标题栏深色 frame | Qt6 build 中，Qlementine 切换主题时会用当前 theme palette 调用 `QApplication::setPalette()`。Qt6 Windows platform window 收到由此产生的 `QEvent::ApplicationPaletteChange` 后调用 `QWindowsWindow::setDarkBorder()`，最终使用 `DwmSetWindowAttribute(DWMWA_USE_IMMERSIVE_DARK_MODE)`。 | Qt5.15.2 port 中，Qlementine 侧的 palette 更新仍然发生，但 Qt6 Windows platform 对 application palette change 的这条响应链不再以同样形式存在，因此 client area 切到深色主题时，原生标题栏可能仍保持浅色。 | 在 Windows 上让 showcase 在 `light.json` 和 `dark.json` 间切换，确认原生标题栏跟随当前 Qlementine theme palette，而不依赖 Windows 系统 app 主题。 | 未检查: 代码路径已恢复，等待 Windows 手动验证。 |
 | 菜单 action 创建 | Qt6 带 shortcut/callback 的 `QMenu::addAction` overload 改为显式创建 `QAction`、设置 shortcut、连接 signal。 | shortcut 或 callback 可能不触发，action 所有权和生命周期需要保持正确。 | 操作 File/Edit/View/Help 菜单、快捷键、主题切换和 About dialog action。 | 未检查。 |
 | Sandbox 菜单 action | Qt6 `QMenu::addAction` shortcut/callback overload 改为显式 action 和 shortcut。 | context menu shortcut 和 callback 可能不同。 | 打开 sandbox 自定义 context menu，触发生成的 action/shortcut。 | 未检查。 |
 | 示例长字符串 | 部分 raw `QStringLiteral` 改为 `QString::fromUtf8`。 | 文本编码和换行可能不同。 | 检查 text edit、plain text edit、message box 示例文本，包括省略号和链接。 | 已观察: 用户报告视觉效果基本一致。 |
@@ -69,8 +70,9 @@
 ## 建议验证顺序
 
 1. 验证 install/package 后能被外部 CMake 项目消费。
-2. 在多个缩放比例下验证高 DPI 图标和 popover 行为。
-3. 验证菜单 shortcut、check mark、icon、submenu 的布局和触发。
-4. 验证带 embedded action 和 validation state 的 line edit。
-5. 验证 tab、switch、navigation bar、segmented control 的 hover/pressed/selected 动画。
-6. 验证 About dialog 的链接和图标行为。
+2. 验证动态切换 `light.json`/`dark.json` 时 Windows 原生标题栏深色 frame 跟随当前 Qlementine 主题。
+3. 在多个缩放比例下验证高 DPI 图标和 popover 行为。
+4. 验证菜单 shortcut、check mark、icon、submenu 的布局和触发。
+5. 验证带 embedded action 和 validation state 的 line edit。
+6. 验证 tab、switch、navigation bar、segmented control 的 hover/pressed/selected 动画。
+7. 验证 About dialog 的链接和图标行为。

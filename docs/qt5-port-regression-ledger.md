@@ -62,6 +62,7 @@ This ledger tracks Qt6-to-Qt5 replacements that may affect behavior. The goal is
 | Sandbox target | `qt_add_executable()` changed to `add_executable()` and MSVC `/utf-8` added. | Resource or moc behavior could differ; non-ASCII text should remain correct. | Build and run sandbox; inspect text-heavy pages and resources. | Observed: user reports sandbox visual output is basically consistent. |
 | Showcase target | `qt_add_executable()` changed to `add_executable()`. | Resource or moc behavior could differ. | Build and run showcase; inspect icons, resources, theme switching, and main widgets. | Observed: user reports showcase visual output is basically consistent. |
 | Showcase icons dependency | `FetchContent_MakeAvailable(qlementine-icons)` replaced by manual static target construction from the fetched sources/resources. | Icon resources, include paths, or target properties may diverge from upstream qlementine-icons behavior. | Check all showcase icon categories, icon theme initialization, and themed icon colorization. | Observed: user reports showcase visual output is basically consistent. |
+| Windows native title bar dark frame | In the Qt6 build, Qlementine theme switching called `QApplication::setPalette()` with the active theme palette. Qt6's Windows platform window handled the resulting `QEvent::ApplicationPaletteChange` and called `QWindowsWindow::setDarkBorder()`, which ultimately used `DwmSetWindowAttribute(DWMWA_USE_IMMERSIVE_DARK_MODE)`. | In the Qt5.15.2 port, the same Qlementine palette update still happens, but the Qt6 Windows platform response to application palette changes is no longer present in the same form, so the native title bar may remain light while the client area changes to the dark theme. | Switch showcase between `light.json` and `dark.json` on Windows and confirm the native title bar follows the active Qlementine theme palette regardless of the Windows system app theme. | Not checked: code path restored; manual Windows verification pending. |
 | Menu action creation | Qt6 `QMenu::addAction` overloads with shortcut/callback replaced by explicit `QAction` creation, shortcut assignment, and signal connection. | Shortcuts or callbacks may not fire, and action ownership/lifetime should remain correct. | Exercise File/Edit/View/Help menus, shortcuts, theme switching, and About dialog actions. | Not checked. |
 | Sandbox menu actions | Qt6 `QMenu::addAction` shortcut/callback overloads replaced by explicit actions and shortcuts. | Context menu shortcuts and callbacks may differ. | Open sandbox custom context menus and trigger generated actions/shortcuts. | Not checked. |
 | Example long strings | Some `QStringLiteral` raw strings changed to `QString::fromUtf8`. | Text encoding and line breaks may differ. | Inspect text edit, plain text edit, and message box sample text including ellipsis and links. | Observed: user reports visuals are basically consistent. |
@@ -69,8 +70,9 @@ This ledger tracks Qt6-to-Qt5 replacements that may affect behavior. The goal is
 ## Open Verification Order
 
 1. Verify package consumption from an external CMake project.
-2. Verify high-DPI icon and popover behavior at multiple scale factors.
-3. Verify menus with shortcuts, check marks, icons, and submenus.
-4. Verify line edits with embedded actions and validation states.
-5. Verify hover/pressed/selected animations for tabs, switch, navigation bar, and segmented control.
-6. Verify About dialog links and icon behavior.
+2. Verify the Windows native title bar dark frame follows the active Qlementine theme during dynamic `light.json`/`dark.json` switching.
+3. Verify high-DPI icon and popover behavior at multiple scale factors.
+4. Verify menus with shortcuts, check marks, icons, and submenus.
+5. Verify line edits with embedded actions and validation states.
+6. Verify hover/pressed/selected animations for tabs, switch, navigation bar, and segmented control.
+7. Verify About dialog links and icon behavior.

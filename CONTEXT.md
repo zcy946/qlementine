@@ -36,6 +36,10 @@ _Avoid_: Qt API cleanup pass, scoped enum rewrite
 A verification ledger that records each Qt5-only replacement or deletion that could affect behavior, visual output, high-DPI rendering, input handling, or build semantics. It exists to guide later manual verification and prevent quiet feature loss during the Qt 5.15.2 Port.
 _Avoid_: ADR, changelog, implementation spec
 
+**Windows Native Title Bar Dark Frame**:
+A Windows-only behavior where the native title bar and window frame follow the active Qlementine light or dark theme instead of staying on the system default frame color.
+_Avoid_: Custom title bar, frameless window
+
 **Library Build Verification**:
 The first acceptance check for Vendor Prefix Removal, requiring the `qlementine` library target to compile after namespace and include path changes. Showcase and sandbox source references may be mechanically updated for consistency, but showcase, sandbox, and documentation are not hard acceptance gates for this step.
 _Avoid_: Full showcase verification, documentation completion

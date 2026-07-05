@@ -25,6 +25,7 @@
 #include <qlementine/widgets/PlainTextEdit.hpp>
 
 #include "EventFilters.hpp"
+#include "utils/WindowsTitleBarUtils.hpp"
 
 #include <QResizeEvent>
 #include <QFontDatabase>
@@ -318,6 +319,7 @@ void QlementineStyle::triggerCompleteRepaint() {
   // Repaint all top-level widgets.
   const auto topLevelWidgets = QApplication::topLevelWidgets();
   for (auto* widget : topLevelWidgets) {
+    updateWindowsNativeTitleBar(widget, palette);
     widget->update();
   }
 }
