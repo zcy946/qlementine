@@ -35,7 +35,8 @@
 
 | 范围 | 变更 | 风险 | 建议验证 | 状态 |
 | --- | --- | --- | --- | --- |
-| 图标 pixmap 缓存 | Qt6 `QIcon::pixmap(size, dpr, mode, state)` 改为 Qt5 `pixmap(size * dpr, mode, state)` 并手动 `setDevicePixelRatio(dpr)`。 | 图标可能模糊、过大、过小，或在不同缩放/状态下缓存错误。 | 在 100%、150%、200% 缩放下比较 normal、disabled、checked、selected、hovered 图标。 | 已观察: 用户报告视觉效果基本一致。 |
+| 示例应用 high-DPI attributes | 通过在创建 `QApplication` 前启用 `Qt::AA_EnableHighDpiScaling` 和 `Qt::AA_UseHighDpiPixmaps`，为 Qt5 showcase 和 sandbox 补回 Qt6 默认 high-DPI 行为。 | 如果缺少这些 Qt5 application attributes，showcase 和 sandbox 会忽略高 DPI 缩放，即使 style 代码仍然处理 device pixel ratio。 | 在 100%、150%、200% 缩放下运行 showcase 和 sandbox，确认窗口几何、图标尺寸/清晰度、popover 和文字指标都按预期缩放。 | 已验证: 用户确认 Qt5 attributes 恢复后，showcase 的高 DPI 适配已正常工作。 |
+| 图标 pixmap 缓存 | Qt6 `QIcon::pixmap(size, dpr, mode, state)` 改为尽量使用 Qt5 window-aware `pixmap(window, size, mode, state)`，调用方传逻辑图标尺寸，由 Qt 选择匹配的高 DPI pixmap。 | 图标可能模糊、过大、过小，或在不同缩放/状态下缓存错误。 | 在 100%、150%、200% 缩放下比较 normal、disabled、checked、selected、hovered 图标。 | 已验证: 用户确认避免整数 widget DPR 和手动 double scaling 后，图标模糊和图标过大回归均已完全解决。 |
 | Header 图标 | header 绘制中应用同样的高 DPI pixmap 回退。 | tree/table header 图标可能尺寸或自动染色不正确。 | 检查带图标的 table/tree header，包括 disabled 状态和 auto icon color。 | 未检查。 |
 | Popover 阴影尺寸 | `QPixmap::deviceIndependentSize()` 改为用尺寸除以 `devicePixelRatio()`。 | 高 DPI 下 drop shadow 位置可能偏移。 | 在多个缩放比例下打开 popover，对比阴影居中和 offset。 | 未检查。 |
 | DPR 变化事件 | 删除 Qt6-only `QEvent::DevicePixelRatioChange` popover frame 处理。 | 在不同 DPI 显示器之间移动打开的 popover 时，可能不会立即重新计算尺寸/阴影。 | 将打开的 popover 在不同 DPI 显示器间移动，或修改系统缩放，确认 frame/shadow 对齐。 | 未检查。 |

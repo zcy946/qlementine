@@ -5,8 +5,8 @@
 
 #include <qlementine/style/QlementineStyle.hpp>
 #include <qlementine/widgets/RoundedFocusFrame.hpp>
-#include <qlementine/utils/ImageUtils.hpp>
 #include <qlementine/utils/FontUtils.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
 
 #include <QPainter>
 #include <QKeyEvent>
@@ -889,10 +889,7 @@ void AbstractItemListWidget::drawItemForeground(QPainter& p, const Item& item) c
 
   // Icon.
   if (showIcon) {
-    const auto pixmap = item.icon.pixmap(iconSize.height(), QIcon::Normal, QIcon::Off);
-    const auto coloredPixmap = colorizePixmap(pixmap, itemFgColor);
-    // Draw image.
-    p.drawPixmap(iconRect, coloredPixmap);
+    drawIcon(iconRect, &p, item.icon, MouseState::Normal, CheckState::NotChecked, this, true, itemFgColor);
   }
 
   // Badge.

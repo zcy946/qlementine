@@ -13,6 +13,8 @@
 
 int main(int argc, char* argv[]) {
   // Must be set before creating a QApplication.
+  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+  QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
   QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
 
   QApplication qApplication(argc, argv);

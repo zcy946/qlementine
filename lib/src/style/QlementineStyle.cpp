@@ -43,6 +43,7 @@
 #include <QGroupBox>
 #include <QComboBox>
 #include <QListView>
+#include <QWindow>
 #include <QMainWindow>
 #include <QFormLayout>
 #include <QScrollBar>
@@ -1876,9 +1877,9 @@ void QlementineStyle::drawControl(ControlElement ce, const QStyleOption* opt, QP
             const auto autoIconColor = this->autoIconColor(w);
             const auto colorize = autoIconColor != AutoIconColor::None;
             const auto iconMode = (optHeader->state & State_Enabled || colorize) ? QIcon::Normal : QIcon::Disabled;
-            const auto devicePixelRatio = qlementine::getWindow(w)->devicePixelRatio();
-            auto iconPixmap = icon.pixmap(QSize(iconExtent, iconExtent) * devicePixelRatio, iconMode);
-            iconPixmap.setDevicePixelRatio(devicePixelRatio);
+            auto* const window = w && w->window() ? w->window()->windowHandle() : nullptr;
+            auto iconPixmap = window ? icon.pixmap(window, QSize(iconExtent, iconExtent), iconMode)
+                                     : icon.pixmap(QSize(iconExtent, iconExtent), iconMode);
             const auto& colorizedPixmap = colorize ? qlementine::colorizePixmap(iconPixmap, fgColor) : iconPixmap;
             p->drawPixmap(iconRect, colorizedPixmap);
           }

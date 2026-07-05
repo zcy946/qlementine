@@ -4,7 +4,7 @@
 #include <qlementine/widgets/IconWidget.hpp>
 
 #include <qlementine/style/QlementineStyle.hpp>
-#include <qlementine/utils/ImageUtils.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
 
 #include <QPainter>
 
@@ -69,19 +69,14 @@ QSize IconWidget::sizeHint() const {
 void IconWidget::paintEvent(QPaintEvent*) {
   const auto* qlementineStyle = qobject_cast<QlementineStyle*>(style());
   const auto autoIconColor = qlementineStyle ? qlementineStyle->autoIconColor(this) : AutoIconColor::None;
-  const auto iconMode =
-    isEnabled() || autoIconColor != AutoIconColor::None ? QIcon::Mode::Normal : QIcon::Mode::Disabled;
-  const auto pixmap = _icon.pixmap(_iconSize.height(), iconMode, QIcon::State::Off);
-  if (pixmap.isNull())
-    return;
-
+  const auto mouse = isEnabled() || autoIconColor != AutoIconColor::None ? MouseState::Normal : MouseState::Disabled;
   const auto& color = palette().color(isEnabled() ? QPalette::Normal : QPalette::Disabled, QPalette::Text);
-  const auto& colorizedPixmap = autoIconColor != AutoIconColor::None ? getColorizedPixmap(pixmap, color) : pixmap;
 
   QPainter p(this);
   p.setRenderHint(QPainter::Antialiasing, true);
   const auto x = (width() - _iconSize.width()) / 2;
   const auto y = (height() - _iconSize.height()) / 2;
-  p.drawPixmap(x, y, colorizedPixmap);
+  const auto iconRect = QRect{ x, y, _iconSize.width(), _iconSize.height() };
+  drawIcon(iconRect, &p, _icon, mouse, CheckState::NotChecked, this, autoIconColor != AutoIconColor::None, color);
 }
 } // namespace qlementine
