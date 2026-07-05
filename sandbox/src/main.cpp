@@ -3,8 +3,8 @@
 
 #include <QApplication>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/style/ThemeManager.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/ThemeManager.hpp>
 
 #include "SandboxWindow.hpp"
 
@@ -27,20 +27,20 @@ int main(int argc, char* argv[]) {
 
 #if USE_CUSTOM_STYLE
   // Set custom QStyle.
-  auto* style = new oclero::qlementine::QlementineStyle(&qApplication);
+  auto* style = new qlementine::QlementineStyle(&qApplication);
   style->setAnimationsEnabled(true);
-  style->setAutoIconColor(oclero::qlementine::AutoIconColor::TextColor);
+  style->setAutoIconColor(qlementine::AutoIconColor::TextColor);
   qApplication.setStyle(style);
 
   // Theme manager.
-  auto* themeManager = new oclero::qlementine::ThemeManager(style);
+  auto* themeManager = new qlementine::ThemeManager(style);
   themeManager->loadDirectory(":/sandbox/themes");
 
   // Define theme on QStyle.
   themeManager->setCurrentTheme("Light");
 #endif
 
-  auto window = std::make_unique<oclero::qlementine::sandbox::SandboxWindow>(themeManager);
+  auto window = std::make_unique<qlementine::sandbox::SandboxWindow>(themeManager);
   window->show();
 
   return qApplication.exec();

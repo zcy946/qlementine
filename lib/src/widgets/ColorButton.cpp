@@ -1,16 +1,16 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/ColorButton.hpp>
+#include <qlementine/widgets/ColorButton.hpp>
 
 #include <QStyle>
 #include <QPainter>
 #include <QColorDialog>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 
 ColorButton::ColorButton(QWidget* parent)
   : QAbstractButton(parent) {
@@ -105,4 +105,4 @@ void ColorButton::paintEvent(QPaintEvent*) {
     qlementine::drawColorMarkBorder(&p, rect(), focusColor, borderWidth);
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

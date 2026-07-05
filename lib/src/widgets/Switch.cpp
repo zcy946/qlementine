@@ -1,21 +1,21 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/Switch.hpp>
+#include <qlementine/widgets/Switch.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/style/QlementineStyleOption.hpp>
-#include <oclero/qlementine/style/Theme.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/QlementineStyleOption.hpp>
+#include <qlementine/style/Theme.hpp>
 
-#include <oclero/qlementine/utils/StateUtils.hpp>
-#include <oclero/qlementine/utils/ImageUtils.hpp>
-#include <oclero/qlementine/utils/FontUtils.hpp>
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/utils/StateUtils.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
+#include <qlementine/utils/FontUtils.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
 
 #include <QPainter>
 #include <QEvent>
 
-namespace oclero::qlementine {
+namespace qlementine {
 Switch::Switch(QWidget* parent)
   : QAbstractButton(parent) {
   setCheckable(true);
@@ -421,4 +421,4 @@ void Switch::setCheckState(Qt::CheckState state) {
   }
 }
 
-} // namespace oclero::qlementine
+} // namespace qlementine

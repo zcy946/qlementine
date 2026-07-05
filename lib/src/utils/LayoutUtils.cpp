@@ -1,9 +1,8 @@
-#include <oclero/qlementine/utils/LayoutUtils.hpp>
+#include <qlementine/utils/LayoutUtils.hpp>
 
 #include <QWidget>
 #include <QStyle>
 
-namespace oclero {
 namespace qlementine {
 QMargins getLayoutMargins(const QWidget* widget) {
   if (const auto* style = widget ? widget->style() : nullptr) {
@@ -53,4 +52,3 @@ void clearLayout(QLayout* layout) {
   }
 }
 } // namespace qlementine
-} // namespace oclero

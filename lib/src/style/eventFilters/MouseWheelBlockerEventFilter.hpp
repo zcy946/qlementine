@@ -7,7 +7,7 @@
 #include <QObject>
 #include <QWidget>
 
-namespace oclero::qlementine {
+namespace qlementine {
 class MouseWheelBlockerEventFilter : public QObject {
 public:
   explicit MouseWheelBlockerEventFilter(QWidget* widget)
@@ -26,4 +26,4 @@ public:
 private:
   QWidget* _widget{ nullptr };
 };
-} // namespace oclero::qlementine
+} // namespace qlementine

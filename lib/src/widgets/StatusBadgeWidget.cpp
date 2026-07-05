@@ -1,11 +1,11 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/StatusBadgeWidget.hpp>
+#include <qlementine/widgets/StatusBadgeWidget.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 StatusBadgeWidget::StatusBadgeWidget(QWidget* parent)
   : StatusBadgeWidget(StatusBadge::Info, StatusBadgeSize::Medium, parent) {}
 
@@ -76,4 +76,4 @@ void StatusBadgeWidget::paintEvent(QPaintEvent* /*e*/) {
   p.setOpacity(opacity);
   qlementine::drawStatusBadge(&p, rect(), _badge, _badgeSize, theme);
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

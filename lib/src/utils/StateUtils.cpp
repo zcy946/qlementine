@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/utils/StateUtils.hpp>
+#include <qlementine/utils/StateUtils.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 MouseState getMouseState(QStyle::State const& state) {
   if (!state.testFlag(QStyle::State_Enabled)) {
     return MouseState::Disabled;
@@ -292,4 +292,4 @@ QString printState(QStyle::State const& state) {
 
   return result;
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

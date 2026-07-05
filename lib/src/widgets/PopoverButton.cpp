@@ -1,14 +1,14 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/PopoverButton.hpp>
+#include <qlementine/widgets/PopoverButton.hpp>
 
-#include <oclero/qlementine/widgets/Popover.hpp>
+#include <qlementine/widgets/Popover.hpp>
 
 #include <QPainter>
 #include <QStyleOptionButton>
 
-namespace oclero::qlementine {
+namespace qlementine {
 PopoverButton::PopoverButton(QWidget* parent)
   : PopoverButton({}, {}, parent) {}
 
@@ -77,4 +77,4 @@ void PopoverButton::paintEvent(QPaintEvent* /*e*/) {
   //fgOpt.fo
   style->drawControl(QStyle::CE_ComboBoxLabel, &fgOpt, &p, this);
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

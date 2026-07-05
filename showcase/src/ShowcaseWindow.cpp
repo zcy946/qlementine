@@ -3,25 +3,25 @@
 
 #include "ShowcaseWindow.hpp"
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/style/ThemeManager.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/ThemeManager.hpp>
 
-#include <oclero/qlementine/utils/IconUtils.hpp>
-#include <oclero/qlementine/utils/WidgetUtils.hpp>
-#include <oclero/qlementine/utils/LayoutUtils.hpp>
+#include <qlementine/utils/IconUtils.hpp>
+#include <qlementine/utils/WidgetUtils.hpp>
+#include <qlementine/utils/LayoutUtils.hpp>
 
-#include <oclero/qlementine/widgets/LineEdit.hpp>
-#include <oclero/qlementine/widgets/NavigationBar.hpp>
-#include <oclero/qlementine/widgets/SegmentedControl.hpp>
-#include <oclero/qlementine/widgets/Switch.hpp>
-#include <oclero/qlementine/widgets/StatusBadgeWidget.hpp>
-#include <oclero/qlementine/widgets/ColorButton.hpp>
-#include <oclero/qlementine/widgets/IconWidget.hpp>
-#include <oclero/qlementine/widgets/AboutDialog.hpp>
+#include <qlementine/widgets/LineEdit.hpp>
+#include <qlementine/widgets/NavigationBar.hpp>
+#include <qlementine/widgets/SegmentedControl.hpp>
+#include <qlementine/widgets/Switch.hpp>
+#include <qlementine/widgets/StatusBadgeWidget.hpp>
+#include <qlementine/widgets/ColorButton.hpp>
+#include <qlementine/widgets/IconWidget.hpp>
+#include <qlementine/widgets/AboutDialog.hpp>
 
-#include <oclero/qlementine/icons/Icons12.hpp>
-#include <oclero/qlementine/icons/Icons16.hpp>
-#include <oclero/qlementine/icons/Icons32.hpp>
+#include <qlementine/icons/Icons12.hpp>
+#include <qlementine/icons/Icons16.hpp>
+#include <qlementine/icons/Icons32.hpp>
 
 #include <QPointer>
 #include <QBoxLayout>
@@ -57,12 +57,12 @@
 
 #include <random>
 
-namespace oclero::qlementine::showcase {
-using Icons16 = oclero::qlementine::icons::Icons16;
+namespace qlementine::showcase {
+using Icons16 = qlementine::icons::Icons16;
 
 static QIcon makeThemedIcon(Icons16 id, const QSize& size = { 16, 16 }) {
-  const auto svgPath = oclero::qlementine::icons::iconPath(id);
-  if (auto* style = oclero::qlementine::appStyle()) {
+  const auto svgPath = qlementine::icons::iconPath(id);
+  if (auto* style = qlementine::appStyle()) {
     return style->makeThemedIcon(svgPath, size);
   } else {
     return QIcon(svgPath);
@@ -151,7 +151,7 @@ struct ShowcaseWindow::Impl {
   QWidget* rightPanel{ nullptr };
   QWidget* workspace{ nullptr };
   QStatusBar* statusBar{ nullptr };
-  oclero::qlementine::Switch* themeSwitch{ nullptr };
+  qlementine::Switch* themeSwitch{ nullptr };
 
   Impl(ShowcaseWindow& o, ThemeManager* themeManager)
     : owner(o)
@@ -276,7 +276,7 @@ struct ShowcaseWindow::Impl {
               }
             });
             QObject::connect(
-              themeManager, &oclero::qlementine::ThemeManager::currentThemeChanged, action, [this, name, action]() {
+              themeManager, &qlementine::ThemeManager::currentThemeChanged, action, [this, name, action]() {
                 action->setChecked(name == themeManager->currentTheme());
               });
           }
@@ -294,7 +294,7 @@ struct ShowcaseWindow::Impl {
       {
         menu->addAction(makeThemedIcon(Icons16::Misc_Mail), "Contact", QKeySequence{}, cb);
         menu->addAction(makeThemedIcon(Icons16::Misc_Info), "About...", QKeySequence{}, [this]() {
-          auto* dialog = new oclero::qlementine::AboutDialog(&owner);
+          auto* dialog = new qlementine::AboutDialog(&owner);
           dialog->setWindowTitle(QString("About %1").arg(QApplication::applicationDisplayName()));
           dialog->setDescription("An application to showcase Qlementine's capabilities as a QStyle library.");
           dialog->setWebsiteUrl("https://oclero.github.io/qlementine");
@@ -323,7 +323,7 @@ struct ShowcaseWindow::Impl {
     tabBar->setChangeCurrentOnDrag(true);
     tabBar->setUsesScrollButtons(true);
 
-    qlementineStyle->setAutoIconColor(tabBar, oclero::qlementine::AutoIconColor::ForegroundColor);
+    qlementineStyle->setAutoIconColor(tabBar, qlementine::AutoIconColor::ForegroundColor);
 
     for (auto i = 0; i < 4; ++i) {
       tabBar->addTab(makeThemedIcon(Icons16::File_File), getDummyText());
@@ -414,20 +414,20 @@ struct ShowcaseWindow::Impl {
       themeLayout->setContentsMargins(0, 0, 0, 0);
       themeWidget->setLayout(themeLayout);
 
-      auto* lightIconWidget = new oclero::qlementine::IconWidget(makeThemedIcon(Icons16::Misc_Sun), themeWidget);
+      auto* lightIconWidget = new qlementine::IconWidget(makeThemedIcon(Icons16::Misc_Sun), themeWidget);
       themeLayout->addWidget(lightIconWidget);
 
-      themeSwitch = new oclero::qlementine::Switch(toolBar);
+      themeSwitch = new qlementine::Switch(toolBar);
       themeSwitch->setToolTip("Switch between light and dark theme");
-      QObject::connect(themeSwitch, &oclero::qlementine::Switch::clicked, themeSwitch, [this](auto checked) {
+      QObject::connect(themeSwitch, &qlementine::Switch::clicked, themeSwitch, [this](auto checked) {
         setTheme(checked ? "Dark" : "Light");
       });
-      QObject::connect(themeManager, &oclero::qlementine::ThemeManager::currentThemeChanged, themeSwitch, [this]() {
+      QObject::connect(themeManager, &qlementine::ThemeManager::currentThemeChanged, themeSwitch, [this]() {
         updateThemeSwitch();
       });
       themeLayout->addWidget(themeSwitch);
 
-      auto* darkIconWidget = new oclero::qlementine::IconWidget(makeThemedIcon(Icons16::Misc_Moon), themeWidget);
+      auto* darkIconWidget = new qlementine::IconWidget(makeThemedIcon(Icons16::Misc_Moon), themeWidget);
       themeLayout->addWidget(darkIconWidget);
 
       updateThemeSwitch();
@@ -480,7 +480,7 @@ struct ShowcaseWindow::Impl {
         auto* treeWidget = new QTreeWidget(widget);
         stackedWidget->addWidget(treeWidget);
 
-        qlementineStyle->setAutoIconColor(treeWidget, oclero::qlementine::AutoIconColor::None);
+        qlementineStyle->setAutoIconColor(treeWidget, qlementine::AutoIconColor::None);
 
         treeWidget->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Expanding);
         treeWidget->setAlternatingRowColors(false);
@@ -770,11 +770,11 @@ ShowcaseWindow::ShowcaseWindow(ThemeManager* themeManager, QWidget* parent)
   _impl->setupUI();
   setMinimumSize(600, 400);
   resize(800, 600);
-  oclero::qlementine::centerWidget(this);
+  qlementine::centerWidget(this);
 
   this->ensurePolished();
   _impl->qlementineStyle = qobject_cast<QlementineStyle*>(this->style());
 }
 
 ShowcaseWindow::~ShowcaseWindow() = default;
-} // namespace oclero::qlementine::showcase
+} // namespace qlementine::showcase

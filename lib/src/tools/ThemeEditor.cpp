@@ -1,11 +1,11 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/tools/ThemeEditor.hpp>
+#include <qlementine/tools/ThemeEditor.hpp>
 
-#include <oclero/qlementine/widgets/ColorEditor.hpp>
-#include <oclero/qlementine/widgets/Label.hpp>
-#include <oclero/qlementine/widgets/LineEdit.hpp>
+#include <qlementine/widgets/ColorEditor.hpp>
+#include <qlementine/widgets/Label.hpp>
+#include <qlementine/widgets/LineEdit.hpp>
 
 #include <QPushButton>
 #include <QBoxLayout>
@@ -56,7 +56,7 @@
   this->NAME##Editor->setText(theme.meta.NAME); \
   this->NAME##Editor->blockSignals(false);
 
-namespace oclero::qlementine {
+namespace qlementine {
 const QString PREVIOUS_PATH_SETTINGS_KEY{ "previousPath" };
 const QString DEFAULT_FILE_NAME{ "theme.json" };
 
@@ -519,4 +519,4 @@ void ThemeEditor::setTheme(const Theme& theme) {
     Q_EMIT themeChanged(_impl->theme);
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
-#include <oclero/qlementine/widgets/AboutDialog.hpp>
+#include <qlementine/widgets/AboutDialog.hpp>
 
 #include <QApplication>
 #include <QLabel>
@@ -8,9 +8,9 @@
 #include <QPushButton>
 #include <QDesktopServices>
 
-#include <oclero/qlementine/widgets/Label.hpp>
+#include <qlementine/widgets/Label.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 AboutDialog::AboutDialog(QWidget* parent)
   : QDialog(parent) {
   setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -116,9 +116,9 @@ void AboutDialog::setupUi() {
     appInfoLayout->setContentsMargins(0, 0, 0, 0);
     appInfoLayout->setSpacing(2);
 
-    _appNameLabel = new oclero::qlementine::Label(this);
+    _appNameLabel = new qlementine::Label(this);
     _appNameLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-    _appNameLabel->setRole(oclero::qlementine::TextRole::H4);
+    _appNameLabel->setRole(qlementine::TextRole::H4);
     _appNameLabel->setText(QApplication::applicationDisplayName());
     _appNameLabel->setAlignment(Qt::AlignCenter);
 
@@ -158,7 +158,7 @@ void AboutDialog::setupUi() {
 
     // Legal information.
     {
-      _websiteLabel = new oclero::qlementine::Label(this);
+      _websiteLabel = new qlementine::Label(this);
       _websiteLabel->setAlignment(Qt::AlignCenter);
       _websiteLabel->setTextInteractionFlags(
         Qt::TextInteractionFlag::LinksAccessibleByMouse | Qt::TextInteractionFlag::LinksAccessibleByKeyboard);
@@ -166,13 +166,13 @@ void AboutDialog::setupUi() {
         QDesktopServices::openUrl(QUrl(link));
       });
 
-      _licenseLabel = new oclero::qlementine::Label(this);
-      _licenseLabel->setRole(oclero::qlementine::TextRole::Caption);
+      _licenseLabel = new qlementine::Label(this);
+      _licenseLabel->setRole(qlementine::TextRole::Caption);
       _licenseLabel->setText(QApplication::applicationDisplayName());
       _licenseLabel->setAlignment(Qt::AlignCenter);
 
-      _copyrightLabel = new oclero::qlementine::Label(this);
-      _copyrightLabel->setRole(oclero::qlementine::TextRole::Caption);
+      _copyrightLabel = new qlementine::Label(this);
+      _copyrightLabel->setRole(qlementine::TextRole::Caption);
       _copyrightLabel->setAlignment(Qt::AlignCenter);
 
       auto* smallTextsLayout = new QVBoxLayout();
@@ -191,4 +191,4 @@ void AboutDialog::setupUi() {
     }
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

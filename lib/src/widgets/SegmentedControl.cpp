@@ -1,13 +1,13 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/SegmentedControl.hpp>
+#include <qlementine/widgets/SegmentedControl.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/widgets/RoundedFocusFrame.hpp>
-#include <oclero/qlementine/utils/ImageUtils.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/widgets/RoundedFocusFrame.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 const QColor& SegmentedControl::getBgColor(const Theme& theme) const {
   return isEnabled() ? theme.backgroundColorMain4 : theme.backgroundColorMain2;
 }
@@ -58,4 +58,4 @@ void SegmentedControl::initStyleOptionFocus(QStyleOptionFocusRoundedRect& opt) c
     getFocusedItemRect().translated(deltaX, deltaY).marginsAdded({ deltaX / 2, deltaY / 2, deltaX / 2, deltaY / 2 });
   opt.radiuses = getItemRadius();
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

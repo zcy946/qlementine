@@ -1,14 +1,14 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/IconWidget.hpp>
+#include <qlementine/widgets/IconWidget.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/utils/ImageUtils.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
 
 #include <QPainter>
 
-namespace oclero::qlementine {
+namespace qlementine {
 IconWidget::IconWidget(QWidget* parent)
   : QWidget(parent) {
   setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -84,4 +84,4 @@ void IconWidget::paintEvent(QPaintEvent*) {
   const auto y = (height() - _iconSize.height()) / 2;
   p.drawPixmap(x, y, colorizedPixmap);
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

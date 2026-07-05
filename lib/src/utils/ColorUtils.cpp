@@ -1,13 +1,13 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/utils/ColorUtils.hpp>
+#include <qlementine/utils/ColorUtils.hpp>
 
 #include <QRegularExpression>
 
 #include <QDebug>
 
-namespace oclero::qlementine {
+namespace qlementine {
 constexpr auto HEX_BASE = 16;
 
 double getContrastRatio(const QColor& c1, const QColor& c2) {
@@ -216,4 +216,4 @@ QString toHexRGBA(const QColor& color) {
     .arg(QString::number(color.blue(), HEX_BASE), 2, '0')
     .arg(QString::number(color.alpha(), HEX_BASE), 2, '0');
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

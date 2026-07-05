@@ -1,13 +1,13 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/utils/BadgeUtils.hpp>
+#include <qlementine/utils/BadgeUtils.hpp>
 
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
 
 #include <QPainterPath>
 
-namespace oclero::qlementine {
+namespace qlementine {
 /// Gets the background and foreground colors.
 std::pair<const QColor, const QColor> getStatusBadgeColors(StatusBadge statusBadge, const Theme& theme) {
   switch (statusBadge) {
@@ -331,4 +331,4 @@ void drawStatusBadge(
   const auto lineThickness = 1.0001;
   drawStatusBadgeIcon(p, iconRect, statusBadge, size, fgColor, lineThickness);
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

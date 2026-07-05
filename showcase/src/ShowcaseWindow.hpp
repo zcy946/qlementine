@@ -7,12 +7,12 @@
 
 #include <memory>
 
-namespace oclero::qlementine {
+namespace qlementine {
 class QlementineStyle;
 class ThemeManager;
-} // namespace oclero::qlementine
+} // namespace qlementine
 
-namespace oclero::qlementine::showcase {
+namespace qlementine::showcase {
 class ShowcaseWindow : public QWidget {
 public:
   explicit ShowcaseWindow(ThemeManager* themeManager = nullptr, QWidget* parent = nullptr);
@@ -22,4 +22,4 @@ private:
   struct Impl;
   std::unique_ptr<Impl> _impl{};
 };
-} // namespace oclero::qlementine::showcase
+} // namespace qlementine::showcase

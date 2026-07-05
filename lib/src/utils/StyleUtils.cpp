@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/utils/StyleUtils.hpp>
+#include <qlementine/utils/StyleUtils.hpp>
 
 #include <QAbstractButton>
 #include <QComboBox>
@@ -20,9 +20,9 @@
 #include <QToolButton>
 #include <QPlainTextEdit>
 
-#include <oclero/qlementine/widgets/ColorButton.hpp>
+#include <qlementine/widgets/ColorButton.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 bool shouldHaveHoverEvents(const QWidget* w) {
   return qobject_cast<const QAbstractButton*>(w) || qobject_cast<const QComboBox*>(w)
          || qobject_cast<const QMenuBar*>(w) || qobject_cast<const QScrollBar*>(w)
@@ -115,4 +115,4 @@ int getTabCount(const QWidget* parentWidget) {
 
   return -1;
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

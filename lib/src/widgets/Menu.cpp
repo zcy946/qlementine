@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/Menu.hpp>
+#include <qlementine/widgets/Menu.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 
 void Menu::setEnabledPredicate(const std::function<bool()>& cb) {
   _updateEnabledCb = cb;
@@ -31,4 +31,4 @@ void Menu::updateProps() {
   updateEnabled();
   updateVisible();
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

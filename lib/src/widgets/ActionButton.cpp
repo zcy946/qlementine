@@ -1,11 +1,11 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/ActionButton.hpp>
+#include <qlementine/widgets/ActionButton.hpp>
 
 #include <QAction>
 
-namespace oclero::qlementine {
+namespace qlementine {
 
 ActionButton::ActionButton(QWidget* parent)
   : QPushButton(parent) {
@@ -38,4 +38,4 @@ void ActionButton::updateFromAction() {
   setChecked(_action->isChecked());
 }
 
-} // namespace oclero::qlementine
+} // namespace qlementine

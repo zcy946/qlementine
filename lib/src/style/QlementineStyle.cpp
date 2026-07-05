@@ -1,28 +1,28 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
 
-#include <oclero/qlementine/resources/ResourceInitialization.hpp>
-#include <oclero/qlementine/animation/WidgetAnimator.hpp>
-#include <oclero/qlementine/animation/WidgetAnimationManager.hpp>
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
-#include <oclero/qlementine/utils/FontUtils.hpp>
-#include <oclero/qlementine/utils/ImageUtils.hpp>
-#include <oclero/qlementine/utils/RadiusesF.hpp>
-#include <oclero/qlementine/utils/StateUtils.hpp>
-#include <oclero/qlementine/utils/StyleUtils.hpp>
-#include <oclero/qlementine/utils/WidgetUtils.hpp>
-#include <oclero/qlementine/utils/ColorUtils.hpp>
-#include <oclero/qlementine/utils/IconUtils.hpp>
-#include <oclero/qlementine/style/Delegates.hpp>
-#include <oclero/qlementine/style/QlementineStyleOption.hpp>
-#include <oclero/qlementine/widgets/RoundedFocusFrame.hpp>
-#include <oclero/qlementine/widgets/AbstractItemListWidget.hpp>
-#include <oclero/qlementine/widgets/Switch.hpp>
-#include <oclero/qlementine/widgets/LineEdit.hpp>
-#include <oclero/qlementine/widgets/ColorButton.hpp>
-#include <oclero/qlementine/widgets/PlainTextEdit.hpp>
+#include <qlementine/resources/ResourceInitialization.hpp>
+#include <qlementine/animation/WidgetAnimator.hpp>
+#include <qlementine/animation/WidgetAnimationManager.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/utils/FontUtils.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
+#include <qlementine/utils/RadiusesF.hpp>
+#include <qlementine/utils/StateUtils.hpp>
+#include <qlementine/utils/StyleUtils.hpp>
+#include <qlementine/utils/WidgetUtils.hpp>
+#include <qlementine/utils/ColorUtils.hpp>
+#include <qlementine/utils/IconUtils.hpp>
+#include <qlementine/style/Delegates.hpp>
+#include <qlementine/style/QlementineStyleOption.hpp>
+#include <qlementine/widgets/RoundedFocusFrame.hpp>
+#include <qlementine/widgets/AbstractItemListWidget.hpp>
+#include <qlementine/widgets/Switch.hpp>
+#include <qlementine/widgets/LineEdit.hpp>
+#include <qlementine/widgets/ColorButton.hpp>
+#include <qlementine/widgets/PlainTextEdit.hpp>
 
 #include "EventFilters.hpp"
 
@@ -61,7 +61,7 @@
 #include <cmath>
 #include <mutex>
 
-namespace oclero::qlementine {
+namespace qlementine {
 
 QlementineStyle* appStyle() {
   return qobject_cast<QlementineStyle*>(qApp->style());
@@ -6192,4 +6192,4 @@ QColor const& QlementineStyle::splitterColor(const MouseState mouse) const {
       return _impl->theme.borderColorTransparent;
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

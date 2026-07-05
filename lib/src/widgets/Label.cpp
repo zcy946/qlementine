@@ -1,13 +1,13 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/Label.hpp>
+#include <qlementine/widgets/Label.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/style/QlementineStyleOption.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/QlementineStyleOption.hpp>
 #include <QApplication>
 
-namespace oclero::qlementine {
+namespace qlementine {
 Label::Label(QWidget* parent)
   : QLabel(parent) {
   updatePaletteFromTheme();
@@ -69,4 +69,4 @@ void Label::updatePaletteFromTheme() {
     update(contentsRect());
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

@@ -1,18 +1,18 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/style/Delegates.hpp>
+#include <qlementine/style/Delegates.hpp>
 
-#include <oclero/qlementine/utils/StateUtils.hpp>
-#include <oclero/qlementine/utils/ImageUtils.hpp>
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
-#include <oclero/qlementine/utils/FontUtils.hpp>
-#include <oclero/qlementine/utils/ColorUtils.hpp>
+#include <qlementine/utils/StateUtils.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/utils/FontUtils.hpp>
+#include <qlementine/utils/ColorUtils.hpp>
 
 #include <QPainter>
 #include <QTreeView>
 
-namespace oclero::qlementine {
+namespace qlementine {
 ComboBoxDelegate::ComboBoxDelegate(QWidget* widget, QlementineStyle& style)
   : QItemDelegate(widget)
   , _widget(widget)
@@ -179,4 +179,4 @@ QSize ComboBoxDelegate::sizeHint(const QStyleOptionViewItem& opt, const QModelIn
     return QSize{ w, h };
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/utils/GeometryUtils.hpp>
+#include <qlementine/utils/GeometryUtils.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 bool isPointInRoundedRect(const QPointF& point, const QRectF& rect, qreal cornerRadius) {
   // Optimisations.
   if (!rect.contains(point)) {
@@ -31,4 +31,4 @@ bool isPointInRoundedRect(const QPointF& point, const QRectF& rect, qreal corner
 
   return true;
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

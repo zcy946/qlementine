@@ -1,11 +1,11 @@
-#include <oclero/qlementine/utils/MenuUtils.hpp>
+#include <qlementine/utils/MenuUtils.hpp>
 
 #include <QMenu>
 #include <QAction>
 #include <QTimer>
 #include <QPointer>
 
-namespace oclero::qlementine {
+namespace qlementine {
 class FlashActionHelper : QObject {
 public:
   FlashActionHelper(QAction* action, QMenu* menu, const std::function<void()>& onAnimationFinished)
@@ -70,4 +70,4 @@ QMenu* getTopLevelMenu(QMenu* menu) {
 void flashAction(QAction* action, QMenu* menu, const std::function<void()>& onAnimationFinished) {
   new FlashActionHelper(action, menu, onAnimationFinished);
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

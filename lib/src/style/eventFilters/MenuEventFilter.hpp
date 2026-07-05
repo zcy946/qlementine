@@ -3,8 +3,8 @@
 
 #pragma once
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/utils/MenuUtils.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/utils/MenuUtils.hpp>
 
 #include <QCoreApplication>
 #include <QEvent>
@@ -15,7 +15,7 @@
 #include <QMouseEvent>
 #include <QPointer>
 
-namespace oclero::qlementine {
+namespace qlementine {
 class MenuEventFilter : public QObject {
 public:
   explicit MenuEventFilter(QMenu* menu)
@@ -112,4 +112,4 @@ private:
   // Please do not dereference it, this is just to close properly the QMenu.
   std::unique_ptr<QEvent> _mouseEventToNotFilter{};
 };
-} // namespace oclero::qlementine
+} // namespace qlementine

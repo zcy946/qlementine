@@ -3,10 +3,10 @@
 
 #pragma once
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/animation/WidgetAnimationManager.hpp>
-#include <oclero/qlementine/utils/StateUtils.hpp>
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/animation/WidgetAnimationManager.hpp>
+#include <qlementine/utils/StateUtils.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
 
 #include <QToolButton>
 #include <QPointer>
@@ -14,7 +14,7 @@
 #include <QPainter>
 #include <QMoveEvent>
 
-namespace oclero::qlementine {
+namespace qlementine {
 class LineEditButtonEventFilter : public QObject {
 public:
   LineEditButtonEventFilter(QlementineStyle* style, WidgetAnimationManager& animManager, QToolButton* button)
@@ -133,4 +133,4 @@ private:
   WidgetAnimationManager& _animManager;
   QToolButton* _button{ nullptr };
 };
-} // namespace oclero::qlementine
+} // namespace qlementine

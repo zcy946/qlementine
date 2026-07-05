@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
-#include <oclero/qlementine/widgets/LoadingSpinner.hpp>
+#include <qlementine/widgets/LoadingSpinner.hpp>
 
 #include <QStyle>
 #include <QPainter>
@@ -15,7 +15,7 @@ qreal easeOutQuad(const qreal x) {
 }
 } // namespace
 
-namespace oclero::qlementine {
+namespace qlementine {
 LoadingSpinner::LoadingSpinner(QWidget* parent)
   : QWidget(parent) {
   setFocusPolicy(Qt::NoFocus);
@@ -119,4 +119,4 @@ void LoadingSpinner::hideEvent(QHideEvent* evt) {
   _timerId = -1;
   _i = 0;
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

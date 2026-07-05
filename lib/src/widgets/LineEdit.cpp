@@ -1,18 +1,18 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/LineEdit.hpp>
+#include <qlementine/widgets/LineEdit.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/style/QlementineStyleOption.hpp>
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
-#include <oclero/qlementine/utils/ImageUtils.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/QlementineStyleOption.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
 
 #include <QPainter>
 #include <QEvent>
 #include <QFontDatabase>
 
-namespace oclero::qlementine {
+namespace qlementine {
 LineEdit::LineEdit(QWidget* parent)
   : QLineEdit(parent) {}
 
@@ -117,4 +117,4 @@ void LineEdit::setStatus(Status status) {
     Q_EMIT statusChanged();
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

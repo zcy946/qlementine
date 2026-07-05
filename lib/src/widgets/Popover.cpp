@@ -1,12 +1,12 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/Popover.hpp>
+#include <qlementine/widgets/Popover.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
-#include <oclero/qlementine/utils/ImageUtils.hpp>
-#include <oclero/qlementine/utils/GeometryUtils.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
+#include <qlementine/utils/GeometryUtils.hpp>
 
 #include <QApplication>
 #include <QBitmap>
@@ -19,7 +19,7 @@
 
 #include <array>
 
-namespace oclero::qlementine {
+namespace qlementine {
 // Values taken arbitrarly, to make it feel smooth and natural.
 constexpr auto openAnimationDurationFactor = .75;
 constexpr auto closeAnimationDurationFactor = .9;
@@ -929,4 +929,4 @@ bool Popover::hitboxContainsPoint(const QPointF& pos) const {
   const auto& frameRect = _frame->geometry().toRectF();
   return qlementine::isPointInRoundedRect(pos, frameRect, _radius);
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

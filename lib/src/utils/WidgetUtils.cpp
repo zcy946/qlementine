@@ -1,15 +1,15 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/utils/WidgetUtils.hpp>
+#include <qlementine/utils/WidgetUtils.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
 
 #include <QFrame>
 #include <QBoxLayout>
 #include <QLayout>
 
-namespace oclero::qlementine {
+namespace qlementine {
 QWidget* makeHorizontalLine(QWidget* parentWidget, int maxWidth) {
   const auto* qlementineStyle =
     parentWidget ? qobject_cast<qlementine::QlementineStyle*>(parentWidget->style()) : nullptr;
@@ -91,4 +91,4 @@ void clearFocus(QWidget* widget, bool recursive) {
     }
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

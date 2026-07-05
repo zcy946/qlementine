@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/animation/WidgetAnimationManager.hpp>
+#include <qlementine/animation/WidgetAnimationManager.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 WidgetAnimationManager::WidgetAnimationManager() {
   initializeEasingCurves();
 }
@@ -92,4 +92,4 @@ const QEasingCurve& WidgetAnimationManager::focusEasingCurve() const {
 const QEasingCurve& WidgetAnimationManager::defaultEasingCurve() const {
   return _defaultEasingCurve;
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

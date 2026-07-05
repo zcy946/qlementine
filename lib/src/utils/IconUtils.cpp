@@ -1,14 +1,14 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/utils/IconUtils.hpp>
+#include <qlementine/utils/IconUtils.hpp>
 
-#include <oclero/qlementine/utils/ImageUtils.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
 
 #include <QSvgRenderer>
 #include <QPainter>
 
-namespace oclero::qlementine {
+namespace qlementine {
 namespace {
 // Helper function to generate icon from SVG renderer with optional colorization.
 QIcon makeIconFromRenderer(QSvgRenderer& svgRenderer, const QSize& size, const IconTheme* iconTheme = nullptr) {
@@ -100,4 +100,4 @@ QIcon makeIconFromSvgData(const QByteArray& svgData, const IconTheme& iconTheme,
   QSvgRenderer svgRenderer(svgData);
   return makeIconFromRenderer(svgRenderer, size, &iconTheme);
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

@@ -4,8 +4,8 @@
 #pragma once
 
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/style/Delegates.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/Delegates.hpp>
 
 #include <QStyledItemDelegate>
 #include <QEvent>
@@ -16,7 +16,7 @@
 #include <QChildEvent>
 #include <QScreen>
 
-namespace oclero::qlementine {
+namespace qlementine {
 
 /// Returns true if the delegate is a default Qt delegate (not a custom subclass).
 inline bool isDefaultItemDelegate(const QAbstractItemDelegate* delegate) {
@@ -203,4 +203,4 @@ public:
 private:
   QComboBox* _comboBox{ nullptr };
 };
-} // namespace oclero::qlementine
+} // namespace qlementine

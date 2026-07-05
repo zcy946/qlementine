@@ -1,12 +1,12 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
-#include <oclero/qlementine/utils/ImageUtils.hpp>
-#include <oclero/qlementine/utils/StateUtils.hpp>
-#include <oclero/qlementine/utils/FontUtils.hpp>
-#include <oclero/qlementine/utils/ColorUtils.hpp>
-#include <oclero/qlementine/utils/WidgetUtils.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
+#include <qlementine/utils/StateUtils.hpp>
+#include <qlementine/utils/FontUtils.hpp>
+#include <qlementine/utils/ColorUtils.hpp>
+#include <qlementine/utils/WidgetUtils.hpp>
 
 #include <QTextLayout>
 #include <QTextLine>
@@ -21,7 +21,7 @@
 
 static constexpr auto QLEMENTINE_PI_4 = 3.14159265358979323846 / 4.;
 
-namespace oclero::qlementine {
+namespace qlementine {
 namespace {
 double getLength(const double x, const double y) {
   return std::sqrt(x * x + y * y);
@@ -1732,4 +1732,4 @@ void updateMessageBoxInformationIcon(QIcon& icon, QSize const& size, Theme const
     icon.addPixmap(disbledPixmap, QIcon::Mode::Disabled, QIcon::State::On);
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

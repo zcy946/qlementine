@@ -1,11 +1,11 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/style/ThemeManager.hpp>
+#include <qlementine/style/ThemeManager.hpp>
 
 #include <QDir>
 
-namespace oclero::qlementine {
+namespace qlementine {
 ThemeManager::ThemeManager(QObject* parent)
   : ThemeManager(nullptr, parent) {}
 
@@ -129,4 +129,4 @@ void ThemeManager::synchronizeThemeOnStyle() {
     setCurrentThemeIndex(themeCount() - 1);
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

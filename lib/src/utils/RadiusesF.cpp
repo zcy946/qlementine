@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/utils/RadiusesF.hpp>
+#include <qlementine/utils/RadiusesF.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 RadiusesF::RadiusesF(int radius)
   : RadiusesF(static_cast<double>(radius)) {}
 
@@ -94,4 +94,4 @@ bool RadiusesF::operator==(const RadiusesF& rhs) const {
 bool RadiusesF::operator!=(const RadiusesF& rhs) const {
   return !(*this == rhs);
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

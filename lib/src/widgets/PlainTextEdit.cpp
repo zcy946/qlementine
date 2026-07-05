@@ -1,11 +1,11 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/PlainTextEdit.hpp>
+#include <qlementine/widgets/PlainTextEdit.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 PlainTextEdit::PlainTextEdit(QWidget* parent)
   : QPlainTextEdit(parent) {}
 
@@ -67,4 +67,4 @@ void PlainTextEdit::updateFont() {
 }
 
 
-} // namespace oclero::qlementine
+} // namespace qlementine

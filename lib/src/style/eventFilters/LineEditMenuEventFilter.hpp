@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
 
 #include <QEvent>
 #include <QObject>
@@ -13,7 +13,7 @@
 #include <QLineEdit>
 #include <QPlainTextEdit>
 
-namespace oclero::qlementine {
+namespace qlementine {
 // Helper to modify the icons.
 class LineEditMenuIconsBehavior : public QObject {
   QPointer<QMenu> _menu{ nullptr };
@@ -27,7 +27,7 @@ class LineEditMenuIconsBehavior : public QObject {
   };
 
   static std::vector<QIcon> iconList(IconListMode mode) {
-    const auto* qlem = oclero::qlementine::appStyle();
+    const auto* qlem = qlementine::appStyle();
     if (!qlem)
       return {};
 
@@ -154,7 +154,7 @@ protected:
 
           // Forward auto icon color mode from parent to the menu.
           if (const auto* menuParent = menu->parentWidget()) {
-            if (const auto* style = qobject_cast<oclero::qlementine::QlementineStyle*>(menuParent->style())) {
+            if (const auto* style = qobject_cast<qlementine::QlementineStyle*>(menuParent->style())) {
               const auto autoIconColor = style->autoIconColor(menuParent);
               QlementineStyle::setAutoIconColor(menu, autoIconColor);
             }
@@ -172,4 +172,4 @@ protected:
     return false;
   }
 };
-} // namespace oclero::qlementine
+} // namespace qlementine

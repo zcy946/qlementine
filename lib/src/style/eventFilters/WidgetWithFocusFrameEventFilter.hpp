@@ -8,7 +8,7 @@
 #include <QTimer>
 #include <QEvent>
 
-namespace oclero::qlementine {
+namespace qlementine {
 class WidgetWithFocusFrameEventFilter : public QObject {
   Q_OBJECT
 public:
@@ -46,4 +46,4 @@ private:
   QFocusFrame* _focusFrame{ nullptr };
   bool _added{ false };
 };
-} // namespace oclero::qlementine
+} // namespace qlementine

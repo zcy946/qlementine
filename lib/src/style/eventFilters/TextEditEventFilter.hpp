@@ -3,8 +3,8 @@
 
 #pragma once
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/utils/StateUtils.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/utils/StateUtils.hpp>
 
 #include <QObject>
 #include <QAbstractScrollArea>
@@ -12,7 +12,7 @@
 #include <QStyleOption>
 #include <QPainter>
 
-namespace oclero::qlementine {
+namespace qlementine {
 // Works for both QTextEdit and QPlainTextEdit
 class TextEditEventFilter : public QObject {
 public:
@@ -62,4 +62,4 @@ public:
 private:
   QAbstractScrollArea* _textEdit{ nullptr };
 };
-} // namespace oclero::qlementine
+} // namespace qlementine

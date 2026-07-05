@@ -1,14 +1,14 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/NavigationBar.hpp>
+#include <qlementine/widgets/NavigationBar.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/utils/ImageUtils.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
 
 #include <QPainter>
 
-namespace oclero::qlementine {
+namespace qlementine {
 const QColor& NavigationBar::getBgColor(const Theme& theme) const {
   return theme.backgroundColorMain2;
 }
@@ -86,4 +86,4 @@ QFont NavigationBar::labelFont() const {
   const auto& biggerFont = qlementineStyle ? qlementineStyle->fontForTextRole(qlementine::TextRole::H5) : this->font();
   return biggerFont;
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

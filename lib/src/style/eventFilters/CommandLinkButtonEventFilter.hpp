@@ -3,17 +3,17 @@
 
 #pragma once
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/animation/WidgetAnimationManager.hpp>
-#include <oclero/qlementine/utils/StateUtils.hpp>
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/animation/WidgetAnimationManager.hpp>
+#include <qlementine/utils/StateUtils.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
 
 #include <QPointer>
 #include <QPainter>
 #include <QCommandLinkButton>
 #include <QEvent>
 
-namespace oclero::qlementine {
+namespace qlementine {
 class CommandLinkButtonEventFilter : public QObject {
 public:
   CommandLinkButtonEventFilter(QlementineStyle* style, WidgetAnimationManager& animManager, QCommandLinkButton* button)
@@ -63,4 +63,4 @@ private:
   WidgetAnimationManager& _animManager;
   QCommandLinkButton* _button{ nullptr };
 };
-} // namespace oclero::qlementine
+} // namespace qlementine

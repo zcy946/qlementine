@@ -1,14 +1,14 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/CommandLinkButton.hpp>
+#include <qlementine/widgets/CommandLinkButton.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/style/QlementineStyleOption.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/QlementineStyleOption.hpp>
 
 #include <QStylePainter>
 
-namespace oclero::qlementine {
+namespace qlementine {
 CommandLinkButton::CommandLinkButton(QWidget* parent)
   : QCommandLinkButton(parent) {
   updateIconSize();
@@ -80,4 +80,4 @@ void CommandLinkButton::updateIconSize() {
   }
 }
 
-} // namespace oclero::qlementine
+} // namespace qlementine

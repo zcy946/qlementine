@@ -1,12 +1,12 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/AbstractItemListWidget.hpp>
+#include <qlementine/widgets/AbstractItemListWidget.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/widgets/RoundedFocusFrame.hpp>
-#include <oclero/qlementine/utils/ImageUtils.hpp>
-#include <oclero/qlementine/utils/FontUtils.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/widgets/RoundedFocusFrame.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
+#include <qlementine/utils/FontUtils.hpp>
 
 #include <QPainter>
 #include <QKeyEvent>
@@ -14,7 +14,7 @@
 
 #include <cmath>
 
-namespace oclero::qlementine {
+namespace qlementine {
 constexpr auto animationFactor = 1;
 
 AbstractItemListWidget::AbstractItemListWidget(QWidget* parent)
@@ -979,4 +979,4 @@ const QColor& AbstractItemListWidget::getItemBgColor(MouseState mouse, const QPa
   return palette.color(mouse != MouseState::Disabled ? QPalette::Normal : QPalette::Disabled, QPalette::Button);
 }
 
-} // namespace oclero::qlementine
+} // namespace qlementine

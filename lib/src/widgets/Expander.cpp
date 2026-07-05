@@ -1,13 +1,13 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/Expander.hpp>
-#include <oclero/qlementine/utils/WidgetUtils.hpp>
+#include <qlementine/widgets/Expander.hpp>
+#include <qlementine/utils/WidgetUtils.hpp>
 
 #include <QStyle>
 #include <QEvent>
 
-namespace oclero::qlementine {
+namespace qlementine {
 constexpr auto animationDurationFactor = 1.;
 
 Expander::Expander(QWidget* parent)
@@ -107,7 +107,7 @@ void Expander::setExpanded(bool expanded) {
     if (_expanded) {
       Q_EMIT aboutToExpand();
     } else {
-      oclero::qlementine::clearFocus(this, true);
+      qlementine::clearFocus(this, true);
       Q_EMIT aboutToShrink();
     }
 
@@ -176,4 +176,4 @@ void Expander::setContent(QWidget* content) {
     Q_EMIT contentChanged();
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

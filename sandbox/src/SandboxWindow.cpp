@@ -3,31 +3,31 @@
 
 #include "SandboxWindow.hpp"
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
-#include <oclero/qlementine/style/ThemeManager.hpp>
-#include <oclero/qlementine/tools/ThemeEditor.hpp>
-#include <oclero/qlementine/utils/ColorUtils.hpp>
-#include <oclero/qlementine/utils/IconUtils.hpp>
-#include <oclero/qlementine/utils/ImageUtils.hpp>
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
-#include <oclero/qlementine/utils/StateUtils.hpp>
-#include <oclero/qlementine/utils/WidgetUtils.hpp>
-#include <oclero/qlementine/widgets/AboutDialog.hpp>
-#include <oclero/qlementine/widgets/ColorEditor.hpp>
-#include <oclero/qlementine/widgets/CommandLinkButton.hpp>
-#include <oclero/qlementine/widgets/Expander.hpp>
-#include <oclero/qlementine/widgets/IconWidget.hpp>
-#include <oclero/qlementine/widgets/Label.hpp>
-#include <oclero/qlementine/widgets/LineEdit.hpp>
-#include <oclero/qlementine/widgets/LoadingSpinner.hpp>
-#include <oclero/qlementine/widgets/NavigationBar.hpp>
-#include <oclero/qlementine/widgets/PlainTextEdit.hpp>
-#include <oclero/qlementine/widgets/Popover.hpp>
-#include <oclero/qlementine/widgets/PopoverButton.hpp>
-#include <oclero/qlementine/widgets/SegmentedControl.hpp>
-#include <oclero/qlementine/widgets/StatusBadgeWidget.hpp>
-#include <oclero/qlementine/widgets/Switch.hpp>
-#include <oclero/qlementine/widgets/NotificationBadge.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/ThemeManager.hpp>
+#include <qlementine/tools/ThemeEditor.hpp>
+#include <qlementine/utils/ColorUtils.hpp>
+#include <qlementine/utils/IconUtils.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/utils/StateUtils.hpp>
+#include <qlementine/utils/WidgetUtils.hpp>
+#include <qlementine/widgets/AboutDialog.hpp>
+#include <qlementine/widgets/ColorEditor.hpp>
+#include <qlementine/widgets/CommandLinkButton.hpp>
+#include <qlementine/widgets/Expander.hpp>
+#include <qlementine/widgets/IconWidget.hpp>
+#include <qlementine/widgets/Label.hpp>
+#include <qlementine/widgets/LineEdit.hpp>
+#include <qlementine/widgets/LoadingSpinner.hpp>
+#include <qlementine/widgets/NavigationBar.hpp>
+#include <qlementine/widgets/PlainTextEdit.hpp>
+#include <qlementine/widgets/Popover.hpp>
+#include <qlementine/widgets/PopoverButton.hpp>
+#include <qlementine/widgets/SegmentedControl.hpp>
+#include <qlementine/widgets/StatusBadgeWidget.hpp>
+#include <qlementine/widgets/Switch.hpp>
+#include <qlementine/widgets/NotificationBadge.hpp>
 
 #include <QActionGroup>
 #include <QApplication>
@@ -61,7 +61,7 @@
 
 #include <random>
 
-namespace oclero::qlementine::sandbox {
+namespace qlementine::sandbox {
 
 static QIcon getTestQIcon(const QSize& size = { 16, 16 }, bool colored = false) {
   if (size.height() == 24) {
@@ -72,7 +72,7 @@ static QIcon getTestQIcon(const QSize& size = { 16, 16 }, bool colored = false) 
 }
 
 // static QIcon makeQIcon(Icons16 id, const QSize& size = { 16, 16 }) {
-//   return oclero::qlementine::makeThemedIcon(id, size);
+//   return qlementine::makeThemedIcon(id, size);
 // }
 
 class ContextMenuEventFilter : public QObject {
@@ -863,7 +863,7 @@ struct SandboxWindow::Impl {
     tableView->setSortingEnabled(true);
 
     if (auto* qlementineStyle = qobject_cast<QlementineStyle*>(tableView->style())) {
-      qlementineStyle->setAutoIconColor(tableView, oclero::qlementine::AutoIconColor::None);
+      qlementineStyle->setAutoIconColor(tableView, qlementine::AutoIconColor::None);
     }
 
     constexpr auto columnCount = 3;
@@ -913,7 +913,7 @@ struct SandboxWindow::Impl {
     treeWidget->setHeaderHidden(true);
     treeWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-    oclero::qlementine::appStyle()->setAutoIconColor(treeWidget, oclero::qlementine::AutoIconColor::None);
+    qlementine::appStyle()->setAutoIconColor(treeWidget, qlementine::AutoIconColor::None);
 
     for (auto i = 0; i < 3; ++i) {
       auto* root = new QTreeWidgetItem(treeWidget);
@@ -1098,7 +1098,7 @@ struct SandboxWindow::Impl {
     auto* tabBar = new QTabBar(windowContent);
     tabBar->setFocusPolicy(Qt::NoFocus);
     tabBar->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
-    oclero::qlementine::appStyle()->setAutoIconColor(tabBar, oclero::qlementine::AutoIconColor::None);
+    qlementine::appStyle()->setAutoIconColor(tabBar, qlementine::AutoIconColor::None);
 
     // QTabBar features.
     tabBar->setTabsClosable(true);
@@ -1332,7 +1332,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
       treeWidget->setHeaderHidden(true);
       treeWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
       treeWidget->setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
-      oclero::qlementine::appStyle()->setAutoIconColor(treeWidget, oclero::qlementine::AutoIconColor::None);
+      qlementine::appStyle()->setAutoIconColor(treeWidget, qlementine::AutoIconColor::None);
 
       for (auto i = 0; i < 3; ++i) {
         auto* root = new QTreeWidgetItem(treeWidget);
@@ -1907,7 +1907,7 @@ SandboxWindow::SandboxWindow(ThemeManager* themeManager, QWidget* parent)
     // _impl->setupUI_toolBar();
   }
   _impl->endSetupUI();
-  oclero::qlementine::centerWidget(this);
+  qlementine::centerWidget(this);
 }
 
 SandboxWindow::~SandboxWindow() = default;
@@ -1918,4 +1918,4 @@ bool SandboxWindow::eventFilter(QObject* watched, QEvent* event) {
   }
   return QMainWindow::eventFilter(watched, event);
 }
-} // namespace oclero::qlementine::sandbox
+} // namespace qlementine::sandbox

@@ -1,10 +1,10 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/style/Theme.hpp>
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
-#include <oclero/qlementine/utils/FontUtils.hpp>
-#include <oclero/qlementine/utils/ColorUtils.hpp>
+#include <qlementine/style/Theme.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/utils/FontUtils.hpp>
+#include <qlementine/utils/ColorUtils.hpp>
 
 #include <QColor>
 #include <QFile>
@@ -16,7 +16,7 @@
 
 #include <optional>
 
-namespace oclero::qlementine {
+namespace qlementine {
 namespace {
 #define TRY_GET_COLOR_ATTRIBUTE(JSON_OBJ, NAME) tryGetColor(JSON_OBJ, QStringLiteral(#NAME), NAME)
 #define TRY_GET_BOOL_ATTRIBUTE(JSON_OBJ, NAME) tryGetBool(JSON_OBJ, QStringLiteral(#NAME), NAME)
@@ -754,4 +754,4 @@ bool Theme::operator!=(const Theme& other) const {
   return !(*this == other);
 }
 
-} // namespace oclero::qlementine
+} // namespace qlementine

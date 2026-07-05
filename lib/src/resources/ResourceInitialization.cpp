@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/resources/ResourceInitialization.hpp>
+#include <qlementine/resources/ResourceInitialization.hpp>
 
 #include <qglobal.h>
 
@@ -13,8 +13,8 @@ void qlementineResourceInitialization() {
   Q_INIT_RESOURCE(qlementine_font_roboto);
 }
 
-namespace oclero::qlementine::resources {
+namespace qlementine::resources {
 void initializeResources() {
   qlementineResourceInitialization();
 }
-} // namespace oclero::qlementine::resources
+} // namespace qlementine::resources

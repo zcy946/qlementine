@@ -10,9 +10,9 @@
 #include <QMouseEvent>
 #include <QPointer>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 class TabBarButtonEventFilter : public QObject {
 public:
   explicit TabBarButtonEventFilter(QTabBar* tabBar)
@@ -136,4 +136,4 @@ private:
   QPointer<QToolButton> _leftButton{ nullptr };
   QPointer<QToolButton> _rightButton{ nullptr };
 };
-} // namespace oclero::qlementine
+} // namespace qlementine

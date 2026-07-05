@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/Action.hpp>
+#include <qlementine/widgets/Action.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 Action::Action(QObject* parent)
   : QAction(parent) {}
 
@@ -168,4 +168,4 @@ void Action::setDescription(const QString& description) {
     Q_EMIT changed();
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

@@ -1,10 +1,10 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/utils/ImageUtils.hpp>
-#include <oclero/qlementine/utils/PrimitiveUtils.hpp>
+#include <qlementine/utils/ImageUtils.hpp>
+#include <qlementine/utils/PrimitiveUtils.hpp>
 
-#include <oclero/qlementine/utils/BlurUtils.hpp>
+#include <qlementine/utils/BlurUtils.hpp>
 
 #include <QPixmap>
 #include <QLatin1Char>
@@ -58,7 +58,7 @@ static void grayscale(const QImage& image, QImage& dest, const QRect& rect = QRe
 }
 } // namespace qtprivate
 
-namespace oclero::qlementine {
+namespace qlementine {
 
 QImage colorizeImage(QPixmap const& input, QColor const& color) {
   if (input.isNull())
@@ -311,7 +311,7 @@ QImage getBlurredImage(const QImage& inputImage, double blurRadius) {
   auto* inputData = input.bits();
   auto* outputData = output.bits();
   constexpr auto channelCount = 4; // ARGB
-  const auto sigma = blurRadius * inputImage.devicePixelRatioF() / oclero::qlementine::pixelToSigma;
+  const auto sigma = blurRadius * inputImage.devicePixelRatioF() / qlementine::pixelToSigma;
   // Since fast_gaussian_blur does an unnecessary std::swap, the actual result is in input.
   fast_gaussian_blur(inputData, outputData, input.width(), input.height(), channelCount, sigma);
   input.setDevicePixelRatio(inputImage.devicePixelRatioF());
@@ -371,4 +371,4 @@ QPixmap getDropShadowPixmap(QSize const& size, double borderRadius, double blurR
 int blurRadiusNecessarySpace(const double blurRadius) {
   return static_cast<int>(std::ceil(blurRadius));
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

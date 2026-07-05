@@ -1,8 +1,8 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
-#include <oclero/qlementine/widgets/NotificationBadge.hpp>
+#include <qlementine/widgets/NotificationBadge.hpp>
 
-#include <oclero/qlementine/style/QlementineStyle.hpp>
+#include <qlementine/style/QlementineStyle.hpp>
 
 #include <QStyle>
 #include <QPainter>
@@ -12,7 +12,7 @@
 
 #include <algorithm>
 
-namespace oclero::qlementine {
+namespace qlementine {
 NotificationBadge::NotificationBadge(QWidget* parent)
   : QWidget(parent) {
   setFocusPolicy(Qt::NoFocus);
@@ -256,4 +256,4 @@ void NotificationBadge::updatePosition() {
 
   setGeometry(x, y, badgeSize.width(), badgeSize.height());
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

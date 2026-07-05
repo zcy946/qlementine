@@ -5,12 +5,12 @@
 
 #include <QMainWindow>
 
-namespace oclero::qlementine {
+namespace qlementine {
 class QlementineStyle;
 class ThemeManager;
-} // namespace oclero::qlementine
+} // namespace qlementine
 
-namespace oclero::qlementine::sandbox {
+namespace qlementine::sandbox {
 class SandboxWindow : public QMainWindow {
 public:
   SandboxWindow(ThemeManager* themeManager = nullptr, QWidget* parent = nullptr);
@@ -22,4 +22,4 @@ private:
   struct Impl;
   std::unique_ptr<Impl> _impl{};
 };
-} // namespace oclero::qlementine::sandbox
+} // namespace qlementine::sandbox

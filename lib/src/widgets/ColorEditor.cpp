@@ -1,15 +1,15 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/ColorEditor.hpp>
+#include <qlementine/widgets/ColorEditor.hpp>
 
-#include <oclero/qlementine/widgets/LineEdit.hpp>
-#include <oclero/qlementine/widgets/ColorButton.hpp>
-#include <oclero/qlementine/utils/ColorUtils.hpp>
+#include <qlementine/widgets/LineEdit.hpp>
+#include <qlementine/widgets/ColorButton.hpp>
+#include <qlementine/utils/ColorUtils.hpp>
 
 #include <QHBoxLayout>
 
-namespace oclero::qlementine {
+namespace qlementine {
 
 ColorEditor::ColorEditor(QWidget* parent)
   : QWidget(parent) {
@@ -99,4 +99,4 @@ void ColorEditor::syncLineEditFromButton() {
       break;
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine

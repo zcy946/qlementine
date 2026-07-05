@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: Olivier Cléro <oclero@hotmail.com>
 // SPDX-License-Identifier: MIT
 
-#include <oclero/qlementine/widgets/RoundedFocusFrame.hpp>
+#include <qlementine/widgets/RoundedFocusFrame.hpp>
 
-namespace oclero::qlementine {
+namespace qlementine {
 const RadiusesF& RoundedFocusFrame::radiuses() const {
   return _radiuses;
 }
@@ -15,4 +15,4 @@ void RoundedFocusFrame::setRadiuses(const RadiusesF& radiuses) {
     update();
   }
 }
-} // namespace oclero::qlementine
+} // namespace qlementine
