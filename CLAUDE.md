@@ -61,6 +61,10 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let Claude Code loop independently. Weak criteria like "make it work" require clarification.
 
+## Local Environment
+
+- Local mixed proxy: `127.0.0.1:10808`.
+
 ## Claude Code Working Rules
 
 - Inspect the real repo before making assumptions.
