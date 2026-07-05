@@ -71,7 +71,7 @@ Strong success criteria let Codex loop independently. Weak criteria like "make i
 - Prefer the smallest correct change.
 - Preserve unrelated user changes.
 - Use existing project patterns and tools.
-- Run the smallest relevant verification before claiming completion.
+- Do not run build verification; the user performs build verification manually.
 - Clearly say what was changed, how it was verified, and what remains untested.
 
 ---
