@@ -5,7 +5,7 @@
 
 #include <qlementine/style/QlementineStyle.hpp>
 #include <qlementine/style/ThemeManager.hpp>
-#include <qlementine/icons/QlementineIcons.hpp>
+#include <oclero/qlementine/icons/QlementineIcons.hpp>
 
 #include "ShowcaseWindow.hpp"
 
@@ -31,11 +31,11 @@ int main(int argc, char* argv[]) {
   auto* style = new qlementine::QlementineStyle(&qApplication);
   style->setAnimationsEnabled(true);
   style->setAutoIconColor(qlementine::AutoIconColor::TextColor);
-  style->setIconPathGetter(qlementine::icons::fromFreeDesktop);
+  style->setIconPathGetter(oclero::qlementine::icons::fromFreeDesktop);
   qApplication.setStyle(style);
 
   // Custom icon theme.
-  qlementine::icons::initializeIconTheme();
+  oclero::qlementine::icons::initializeIconTheme();
   QIcon::setThemeName("qlementine");
 
   // Theme manager.

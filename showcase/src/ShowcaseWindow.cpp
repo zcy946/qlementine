@@ -19,9 +19,9 @@
 #include <qlementine/widgets/IconWidget.hpp>
 #include <qlementine/widgets/AboutDialog.hpp>
 
-#include <qlementine/icons/Icons12.hpp>
-#include <qlementine/icons/Icons16.hpp>
-#include <qlementine/icons/Icons32.hpp>
+#include <oclero/qlementine/icons/Icons12.hpp>
+#include <oclero/qlementine/icons/Icons16.hpp>
+#include <oclero/qlementine/icons/Icons32.hpp>
 
 #include <QPointer>
 #include <QBoxLayout>
@@ -58,10 +58,10 @@
 #include <random>
 
 namespace qlementine::showcase {
-using Icons16 = qlementine::icons::Icons16;
+using Icons16 = oclero::qlementine::icons::Icons16;
 
 static QIcon makeThemedIcon(Icons16 id, const QSize& size = { 16, 16 }) {
-  const auto svgPath = qlementine::icons::iconPath(id);
+  const auto svgPath = oclero::qlementine::icons::iconPath(id);
   if (auto* style = qlementine::appStyle()) {
     return style->makeThemedIcon(svgPath, size);
   } else {
