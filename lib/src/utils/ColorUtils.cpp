@@ -173,17 +173,17 @@ std::optional<QColor> tryGetColorFromHexaString(QString const& str) {
 }
 
 std::optional<QColor> tryGetColorFromVariant(QVariant const& variant) {
-  const auto variantType = variant.typeId();
+  const auto variantType = variant.type();
 
   // Channel list ([RRR, GGG, BBB, AAA]).
-  if (variantType == QMetaType::Type::QVariantList) {
+  if (variantType == QVariant::List) {
     const auto color = tryGetColorFromVariantList(variant.toList());
     if (color.has_value()) {
       return color.value();
     }
   }
   // Various ways to write color as a string.
-  else if (variantType == QMetaType::Type::QString) {
+  else if (variantType == QVariant::String) {
     const auto variantString = variant.toString();
 
     // Check if color is written as hexadecimal.

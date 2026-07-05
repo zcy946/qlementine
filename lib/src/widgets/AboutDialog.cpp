@@ -7,6 +7,7 @@
 #include <QBoxLayout>
 #include <QPushButton>
 #include <QDesktopServices>
+#include <QUrl>
 
 #include <qlementine/widgets/Label.hpp>
 

@@ -42,7 +42,7 @@ Q_SIGNALS:
 
 protected:
   void paintEvent(QPaintEvent* e) override;
-  void enterEvent(QEnterEvent* e) override;
+  void enterEvent(QEvent* e) override;
   void leaveEvent(QEvent* e) override;
   void changeEvent(QEvent* e) override;
   void focusInEvent(QFocusEvent* e) override;

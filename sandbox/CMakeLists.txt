@@ -8,7 +8,7 @@ if(APPLE)
   )
 endif()
 
-qt_add_executable(${SANDBOX_NAME} WIN32 MACOSX_BUNDLE
+add_executable(${SANDBOX_NAME} WIN32 MACOSX_BUNDLE
   ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/SandboxWindow.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/SandboxWindow.hpp
@@ -18,6 +18,11 @@ qt_add_executable(${SANDBOX_NAME} WIN32 MACOSX_BUNDLE
 
 target_link_libraries(${SANDBOX_NAME} PUBLIC
   qlementine
+)
+
+target_compile_options(${SANDBOX_NAME}
+  PRIVATE
+    $<$<CXX_COMPILER_ID:MSVC>:/utf-8>
 )
 
 install(

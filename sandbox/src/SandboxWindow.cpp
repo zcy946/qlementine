@@ -667,7 +667,7 @@ struct SandboxWindow::Impl {
   void setupUI_textEdit() {
     auto* textEdit = new QTextEdit(windowContent);
     textEdit->setTabChangesFocus(true);
-    const auto text = QStringLiteral(
+    const auto text = QString::fromUtf8(
       R"(Lorem ipsum <b>dolor sit amet</b>, consectetur <i>adipiscing elit</i>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.)");
     textEdit->append(text);
     textEdit->setPlaceholderText(QStringLiteral("Placeholder"));
@@ -680,7 +680,7 @@ struct SandboxWindow::Impl {
     auto* plainTextEdit = new PlainTextEdit(windowContent); // Also PlainTextEdit
     plainTextEdit->setTabChangesFocus(true);
     plainTextEdit->setFixedHeight(84);
-    const auto text = QStringLiteral(
+    const auto text = QString::fromUtf8(
       R"(Lorem ipsum <b>dolor sit amet</b>, consectetur <i>adipiscing elit</i>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.)");
     plainTextEdit->appendHtml(text);
     plainTextEdit->setPlaceholderText(QStringLiteral("Placeholder"));
@@ -1231,12 +1231,12 @@ struct SandboxWindow::Impl {
 
   void setupUI_messageBox() {
     const auto title = QStringLiteral("Title of the QMessageBox");
-    const auto text = QStringLiteral(
+    const auto text = QString::fromUtf8(
       R"(Lorem ipsum dolor sit amet, consectetur <a href="#">adipiscing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.)");
-    const auto informativeText = QStringLiteral(
+    const auto informativeText = QString::fromUtf8(
       R"(Vitae ut et dolorem eum. Rerum aut aut quis <a href="#">dolorum facere</a> quod veniam accusantium.
 Accusamus quidem sed possimus aut consequatur soluta ut. Soluta ut enim quo reiciendis a tempora dolorum min…)");
-    const auto detailedText = QStringLiteral(
+    const auto detailedText = QString::fromUtf8(
       R"(Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
@@ -1821,7 +1821,8 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
       const auto& clickPos = e->pos();
       const auto clickPosStr = QString("(%1, %2)").arg(clickPos.x()).arg(clickPos.y());
 
-      menu.addAction(QString("Pos: %1").arg(clickPosStr), Qt::CTRL | Qt::Key_A, &menu, cb);
+      auto* posAction = menu.addAction(QString("Pos: %1").arg(clickPosStr), &menu, cb);
+      posAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_A));
 
       const auto randomCount = getRandomInt(1, 10);
       for (auto i = 0; i < randomCount; ++i) {
@@ -1831,7 +1832,8 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
           textList.append("A");
         }
 
-        menu.addAction(textList.join("") + QString(" %1").arg(i), Qt::ALT | Qt::SHIFT | Qt::Key_0 + i, &menu, cb);
+        auto* action = menu.addAction(textList.join("") + QString(" %1").arg(i), &menu, cb);
+        action->setShortcut(QKeySequence(Qt::ALT | Qt::SHIFT | (Qt::Key_0 + i)));
       }
 
       // Show menu.

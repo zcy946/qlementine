@@ -2,13 +2,48 @@ set(SHOWCASE_NAME "showcase")
 
 # Dependency: qlementine-icons
 include(FetchContent)
-FetchContent_Declare(qlementine-icons
+FetchContent_Declare(qlementine_icons
   GIT_REPOSITORY "https://github.com/oclero/qlementine-icons.git"
   GIT_TAG v1.12.0
 )
-FetchContent_MakeAvailable(qlementine-icons)
+
+FetchContent_GetProperties(qlementine_icons)
+if(NOT qlementine_icons_POPULATED)
+  FetchContent_Populate(qlementine_icons)
+endif()
+
+file(GLOB_RECURSE QLEMENTINE_ICONS_HEADERS CONFIGURE_DEPENDS
+  "${qlementine_icons_SOURCE_DIR}/sources/include/oclero/qlementine/icons/*.hpp"
+)
+file(GLOB_RECURSE QLEMENTINE_ICONS_SOURCES CONFIGURE_DEPENDS
+  "${qlementine_icons_SOURCE_DIR}/sources/src/icons/*.cpp"
+)
+file(GLOB_RECURSE QLEMENTINE_ICONS_RESOURCES CONFIGURE_DEPENDS
+  "${qlementine_icons_SOURCE_DIR}/sources/resources/icons/*.qrc"
+)
+
+add_library(qlementine-icons STATIC
+  ${QLEMENTINE_ICONS_HEADERS}
+  ${QLEMENTINE_ICONS_SOURCES}
+  ${QLEMENTINE_ICONS_RESOURCES}
+)
+
+target_include_directories(qlementine-icons
+  PUBLIC
+    "${qlementine_icons_SOURCE_DIR}/sources/include"
+)
+
+target_link_libraries(qlementine-icons
+  PUBLIC
+    Qt5::Core
+  PRIVATE
+    Qt5::Svg
+)
+
 set_target_properties(qlementine-icons
   PROPERTIES
+    AUTOMOC ON
+    AUTORCC ON
     FOLDER dependencies
 )
 
@@ -27,7 +62,7 @@ set(SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/showcase.qrc
 )
 
-qt_add_executable(${SHOWCASE_NAME}
+add_executable(${SHOWCASE_NAME}
   WIN32 MACOSX_BUNDLE
   ${SOURCES}
 )

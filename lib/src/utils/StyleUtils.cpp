@@ -97,10 +97,6 @@ bool shouldNotHaveWheelEvents(const QWidget* w) {
 }
 
 int getTabIndex(const QStyleOptionTab* optTab, const QWidget* parentWidget) {
-  if (const auto* optTabV4 = qstyleoption_cast<const QStyleOptionTab*>(optTab)) {
-    return optTabV4->tabIndex;
-  }
-
   if (const auto* tabBar = qobject_cast<const QTabBar*>(parentWidget)) {
     return tabBar->tabAt(optTab->rect.topLeft());
   }

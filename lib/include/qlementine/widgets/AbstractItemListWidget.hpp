@@ -82,7 +82,7 @@ protected: // QWidget override.
   void keyPressEvent(QKeyEvent* e) override;
   void keyReleaseEvent(QKeyEvent* e) override;
   void mousePressEvent(QMouseEvent* e) override;
-  void enterEvent(QEnterEvent* e) override;
+  void enterEvent(QEvent* e) override;
   void leaveEvent(QEvent* e) override;
   void mouseReleaseEvent(QMouseEvent* e) override;
   void mouseMoveEvent(QMouseEvent* e) override;

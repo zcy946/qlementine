@@ -245,7 +245,7 @@ void drawRoundedRectBorder(
 
 void drawRoundedRectBorder(
   QPainter* p, QRect const& rect, QColor const& color, qreal const borderWidth, qreal const radius) {
-  drawRoundedRectBorder(p, rect.toRectF(), color, borderWidth, radius);
+  drawRoundedRectBorder(p, QRectF(rect), color, borderWidth, radius);
 }
 
 void drawRoundedRectBorder(
@@ -1375,7 +1375,8 @@ QPixmap getPixmap(
   if (QPixmapCache::find(cacheKey, &pixmap)) {
     return pixmap;
   }
-  pixmap = icon.pixmap(iconSize, devicePixelRatio, iconMode, iconState);
+  pixmap = icon.pixmap(iconSize * devicePixelRatio, iconMode, iconState);
+  pixmap.setDevicePixelRatio(devicePixelRatio);
   QPixmapCache::insert(cacheKey, pixmap);
   return pixmap;
 }

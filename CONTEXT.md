@@ -17,8 +17,24 @@ The first renaming step that removes the `oclero` namespace or supplier prefix w
 _Avoid_: Full rename, widget removal
 
 **Qt 5.15.2 Port**:
-The later migration step that adapts the fork from its current Qt 6 build setup and APIs to Qt 5.15.2 after Vendor Prefix Removal is complete.
+The later migration step that adapts the fork from its current Qt 6 build setup and APIs to a Qt5-only build that explicitly requires Qt 5.15.2 after Vendor Prefix Removal is complete.
 _Avoid_: Vendor prefix removal
+
+**Qt5 Library Build Verification**:
+The first acceptance check for the Qt 5.15.2 Port, requiring only the `qlementine` static library target to configure and compile with Qt 5.15.2. Showcase, sandbox, and documentation are not hard acceptance gates for this step, and showcase should be disabled by default during this migration.
+_Avoid_: Full showcase verification, Qt6 compatibility
+
+**Qt5 Example App Configure Verification**:
+The follow-up acceptance check for the Qt 5.15.2 Port where sandbox and showcase are enabled and expected to configure with Qt5. This check only establishes that the example application targets enter the build graph; source-level example app compile errors are handled separately.
+_Avoid_: Full showcase verification, library verification
+
+**Minimal Qt API Backport**:
+A Qt 5.15.2 Port tactic where source-level Qt API changes are made only in response to actual Qt5 compile errors. It avoids broad preemptive rewrites of Qt enum spelling or application-layer code.
+_Avoid_: Qt API cleanup pass, scoped enum rewrite
+
+**Qt5 Port Regression Ledger**:
+A verification ledger that records each Qt5-only replacement or deletion that could affect behavior, visual output, high-DPI rendering, input handling, or build semantics. It exists to guide later manual verification and prevent quiet feature loss during the Qt 5.15.2 Port.
+_Avoid_: ADR, changelog, implementation spec
 
 **Library Build Verification**:
 The first acceptance check for Vendor Prefix Removal, requiring the `qlementine` library target to compile after namespace and include path changes. Showcase and sandbox source references may be mechanically updated for consistency, but showcase, sandbox, and documentation are not hard acceptance gates for this step.

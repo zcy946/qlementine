@@ -3,6 +3,8 @@
 
 #include <qlementine/utils/GeometryUtils.hpp>
 
+#include <cmath>
+
 namespace qlementine {
 bool isPointInRoundedRect(const QPointF& point, const QRectF& rect, qreal cornerRadius) {
   // Optimisations.

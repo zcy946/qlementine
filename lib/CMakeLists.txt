@@ -113,7 +113,7 @@ set(RESOURCES
 )
 
 # Create target.
-qt_add_library(${PROJECT_NAME} STATIC
+add_library(${PROJECT_NAME} STATIC
   ${HEADERS}
   ${SOURCES}
   ${RESOURCES}
@@ -130,9 +130,9 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
   PUBLIC
-    Qt::Core
-    Qt::Widgets
-    Qt::Svg
+    Qt5::Core
+    Qt5::Widgets
+    Qt5::Svg
 )
 
 set_target_properties(${PROJECT_NAME}
@@ -150,7 +150,7 @@ set_target_properties(${PROJECT_NAME}
 
 target_compile_options(${PROJECT_NAME}
   PRIVATE
-    $<$<CXX_COMPILER_ID:MSVC>:/MP /WX /W4>
+    $<$<CXX_COMPILER_ID:MSVC>:/MP /WX /W4 /utf-8>
     $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Werror>
 )
 

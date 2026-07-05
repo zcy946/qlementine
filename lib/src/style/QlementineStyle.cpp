@@ -1876,8 +1876,9 @@ void QlementineStyle::drawControl(ControlElement ce, const QStyleOption* opt, QP
             const auto autoIconColor = this->autoIconColor(w);
             const auto colorize = autoIconColor != AutoIconColor::None;
             const auto iconMode = (optHeader->state & State_Enabled || colorize) ? QIcon::Normal : QIcon::Disabled;
-            const auto iconPixmap =
-              icon.pixmap({ iconExtent, iconExtent }, qlementine::getWindow(w)->devicePixelRatio(), iconMode);
+            const auto devicePixelRatio = qlementine::getWindow(w)->devicePixelRatio();
+            auto iconPixmap = icon.pixmap(QSize(iconExtent, iconExtent) * devicePixelRatio, iconMode);
+            iconPixmap.setDevicePixelRatio(devicePixelRatio);
             const auto& colorizedPixmap = colorize ? qlementine::colorizePixmap(iconPixmap, fgColor) : iconPixmap;
             p->drawPixmap(iconRect, colorizedPixmap);
           }
@@ -3905,9 +3906,7 @@ QSize QlementineStyle::sizeFromContents(
 
           // Shortcut. NB: Some difficulties to understand what's going on. Qt changes the width so here's a hack.
           const auto hasShortcut = shortcut.length() > 0;
-          const auto reservedShortcutW = optMenuItem->reservedShortcutWidth;
-          const auto shortcutTextWidth = hasShortcut ? fm.boundingRect(shortcut).width() : 0;
-          const auto shortcutW = std::max(reservedShortcutW, shortcutTextWidth);
+          const auto shortcutW = hasShortcut ? fm.boundingRect(shortcut).width() : 0;
 
           // Icon.
           const auto iconW =
@@ -4125,12 +4124,6 @@ int QlementineStyle::pixelMetric(PixelMetric m, const QStyleOption* opt, const Q
     case PM_ButtonShiftVertical:
       return 0;
     case PM_ButtonIconSize:
-      return _impl->theme.iconSize.height();
-
-    // LineEdit.
-    case PM_LineEditIconMargin:
-      return _impl->theme.spacing;
-    case PM_LineEditIconSize:
       return _impl->theme.iconSize.height();
 
     // Frame.

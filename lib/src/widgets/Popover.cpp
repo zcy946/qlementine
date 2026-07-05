@@ -69,7 +69,6 @@ public:
     const auto type = e->type();
     switch (type) {
       case QEvent::LayoutRequest:
-      case QEvent::DevicePixelRatioChange:
         callResize();
         break;
       default:
@@ -524,7 +523,9 @@ void Popover::paintEvent(QPaintEvent*) {
     if (_dropShadowCache.frameSize != frameSize) {
       updateDropShadowCache();
     }
-    const auto dropShadowSize = _dropShadowCache.shadowPixmap.deviceIndependentSize();
+    const auto dropShadowDpr = _dropShadowCache.shadowPixmap.devicePixelRatio();
+    const auto dropShadowSize =
+      QSizeF(_dropShadowCache.shadowPixmap.width() / dropShadowDpr, _dropShadowCache.shadowPixmap.height() / dropShadowDpr);
     const auto dropShadowX = frameX + (frameSize.width() - dropShadowSize.width()) / 2. + _dropShadowOffset.x();
     const auto dropShadowY = frameY + (frameSize.height() - dropShadowSize.height()) / 2. + _dropShadowOffset.y();
 
@@ -546,7 +547,7 @@ void Popover::paintEvent(QPaintEvent*) {
 
     if (_borderColor.isValid() && _borderWidth > 0.) {
       const auto half_border = _borderWidth / 2.;
-      const auto border_rect = bgRect.toRectF().adjusted(half_border, half_border, -half_border, -half_border);
+      const auto border_rect = QRectF(bgRect).adjusted(half_border, half_border, -half_border, -half_border);
       const auto border_radius = _radius - half_border;
       p.setPen(QPen{ _borderColor, _borderWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin });
       p.setBrush(Qt::NoBrush);
@@ -558,7 +559,7 @@ void Popover::paintEvent(QPaintEvent*) {
 void Popover::mousePressEvent(QMouseEvent* e) {
   QWidget::mousePressEvent(e);
 
-  if (hitboxContainsPoint(e->position())) {
+  if (hitboxContainsPoint(e->localPos())) {
     Q_EMIT pressed();
   } else {
     e->ignore();
@@ -569,7 +570,7 @@ void Popover::mousePressEvent(QMouseEvent* e) {
 void Popover::mouseReleaseEvent(QMouseEvent* e) {
   QWidget::mouseReleaseEvent(e);
 
-  if (hitboxContainsPoint(e->position())) {
+  if (hitboxContainsPoint(e->localPos())) {
     Q_EMIT released();
   } else {
     e->ignore();
@@ -921,12 +922,12 @@ QBitmap Popover::getFrameMask() const {
     p.drawRoundedRect(maskRect, maskRadius, maskRadius);
   }
 
-  const auto bitmap = QBitmap::fromPixmap(mask);
+  const auto bitmap = QBitmap(mask);
   return bitmap;
 }
 
 bool Popover::hitboxContainsPoint(const QPointF& pos) const {
-  const auto& frameRect = _frame->geometry().toRectF();
+  const auto frameRect = QRectF(_frame->geometry());
   return qlementine::isPointInRoundedRect(pos, frameRect, _radius);
 }
 } // namespace qlementine

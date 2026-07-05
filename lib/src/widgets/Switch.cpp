@@ -74,7 +74,7 @@ void Switch::paintEvent(QPaintEvent*) {
   const auto& textColor = getTextColor();
   const auto borderW = 1.0;
   const auto halfBorderW = borderW / 2.;
-  const auto bgRect = switchRect.toRectF().marginsRemoved({ halfBorderW, halfBorderW, halfBorderW, halfBorderW });
+  const auto bgRect = QRectF(switchRect).marginsRemoved({ halfBorderW, halfBorderW, halfBorderW, halfBorderW });
   p.setPen(Qt::NoPen);
   p.setBrush(bgColor);
   p.drawRoundedRect(bgRect, switchRadius, switchRadius);
@@ -139,7 +139,7 @@ void Switch::paintEvent(QPaintEvent*) {
   }
 }
 
-void Switch::enterEvent(QEnterEvent* e) {
+void Switch::enterEvent(QEvent* e) {
   QAbstractButton::enterEvent(e);
   _isMouseOver = true;
   startAnimation();
