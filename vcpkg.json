@@ -1,0 +1,10 @@
+{
+  "name": "qlementine",
+  "version-string": "0.0.1",
+  "description": "Modern QStyle for desktop Qt6 applications.",
+  "license": "MIT",
+  "builtin-baseline": "aa40adda5352e87655b8583cfb2451d5e9e276fd",
+  "dependencies": [
+    "spdlog"
+  ]
+}

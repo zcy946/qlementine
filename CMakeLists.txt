@@ -45,6 +45,9 @@ qt_standard_project_setup(
 # The library.
 add_subdirectory(lib)
 
+option(QLEMENTINE_SANDBOX "Build the Qlementine sandbox app." OFF)
+option(QLEMENTINE_SHOWCASE "Build the Qlementine showcase app." ON)
+
 # Example apps using the lib.
 if(QLEMENTINE_SANDBOX)
   add_subdirectory(sandbox)
