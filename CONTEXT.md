@@ -1,0 +1,29 @@
+# Qlementine Fork
+
+This context describes the language for the forked Qt widget style library and its planned redevelopment boundaries.
+
+## Language
+
+**Hard Fork**:
+A redevelopment path where this repository becomes an independent library basis, allowing project renaming, namespace changes, CMake target changes, and loss of long-term upstream synchronization.
+_Avoid_: Wrapper, upstream-compatible fork
+
+**Upstream Qlementine**:
+The original open-source project this repository was forked from.
+_Avoid_: Original project, source project
+
+**Vendor Prefix Removal**:
+The first renaming step that removes the `oclero` namespace or supplier prefix while leaving Qlementine-specific names in place for now. During this step, `oclero::qlementine` becomes `qlementine`, public include paths move from `oclero/qlementine/...` to `qlementine/...`, the aggregate header moves from `oclero/qlementine.hpp` to `qlementine.hpp`, no compatibility aliases or forwarding headers are kept, and the existing `qlementine` CMake target remains unchanged.
+_Avoid_: Full rename, widget removal
+
+**Qt 5.15.2 Port**:
+The later migration step that adapts the fork from its current Qt 6 build setup and APIs to Qt 5.15.2 after Vendor Prefix Removal is complete.
+_Avoid_: Vendor prefix removal
+
+**Library Build Verification**:
+The first acceptance check for Vendor Prefix Removal, requiring the `qlementine` library target to compile after namespace and include path changes. Showcase and sandbox source references may be mechanically updated for consistency, but showcase, sandbox, and documentation are not hard acceptance gates for this step.
+_Avoid_: Full showcase verification, documentation completion
+
+**Mechanical Rename**:
+A constrained batch edit used for Vendor Prefix Removal, limited to moving public include paths and replacing the agreed `oclero` namespace and include references. It must not include opportunistic style changes, refactors, redesign work, or broad documentation and README brand cleanup.
+_Avoid_: Refactor, cleanup pass
